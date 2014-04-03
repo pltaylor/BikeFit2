@@ -1,9 +1,10 @@
 ﻿using System.Data.Entity;
 using BikeFit2.Models;
+using Ninject;
 
 namespace BikeFit2.DataLayer
 {
-    public class BikeFitContext : DbContext 
+    public class BikeFitContext : DbContext, IBikeFitContext
     {
         public BikeFitContext() : base("AzureConnection")
         {

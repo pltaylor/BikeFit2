@@ -154,3 +154,5 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+BikeFit2/App_Data/aspnet-BikeFit2-20140402080315.mdf
+BikeFit2/App_Data/aspnet-BikeFit2-20140402080315_log.ldf

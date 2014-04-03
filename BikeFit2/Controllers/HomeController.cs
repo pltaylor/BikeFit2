@@ -16,5 +16,10 @@ namespace BikeFit2.Controllers
         {
             return View();
         }
+
+        public PartialViewResult FrameSelection()
+        {
+            return PartialView();
+        }
     }
 }

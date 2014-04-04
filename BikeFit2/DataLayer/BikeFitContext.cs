@@ -1,6 +1,5 @@
 ﻿using System.Data.Entity;
 using BikeFit2.Models;
-using Ninject;
 
 namespace BikeFit2.DataLayer
 {

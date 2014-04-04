@@ -32,6 +32,9 @@ namespace BikeFit2
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/toastr.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/frames.js").Include(
+                "~/scripts/frames.js"));
         }
     }
 }

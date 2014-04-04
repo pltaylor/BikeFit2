@@ -48,6 +48,28 @@ input[type="checkbox"].input-validation-error {
     left: 280px;
 }
 
+.navbar .brand {
+    padding: 6px 30px 12px 30px;
+    margin-bottom: -8px;
+    height: 48px;
+}
+
+.brand .title {
+    float: left;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 145%;
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin: 2% 0;
+    padding-left: 50px;
+    -webkit-text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+    text-transform: uppercase;
+    text-transform: initial;
+    text-decoration: none;
+    color: #0081C2;
+}
+
 .frame-row
 {
     height: 250px;

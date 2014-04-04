@@ -17,6 +17,11 @@ namespace BikeFit2.Controllers
             return View();
         }
 
+        public ActionResult FullTriBike()
+        {
+            return View();
+        }
+
         public PartialViewResult FrameSelection()
         {
             return PartialView();

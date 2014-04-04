@@ -1,0 +1,126 @@
+﻿
+<div>
+    <h2 class="page-title" data-bind="text: title"></h2>
+    <canvas id="bike" width="500" height="250" class="frame-canvas">
+        <p>Your browser doesn't support canvas.</p>
+    </canvas>
+    <div class="row" style="margin-top: 235px;">
+        <div class="col-md-12" data-bind="with: frame">
+            <div class="row form-inline well well-sm">
+                <h3>Frame:</h3>
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <label class="control-label" for="manufacturer">Manufacturer:</label>
+                        <select class="input-medium" id="manufacturer" data-bind="options: $parent.manufacturers, optionsText: 'name', value: manufacturer"></select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label" for="model">Model:</label>
+                        <select class="input-medium" id="model" data-bind="options: models, optionsText: 'name', value: model"></select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="control-label" for="size">Size:</label>
+                        <select class="input-medium" id="size" data-bind="options: sizes, optionsText: 'size', value: size"></select>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="with: size">
+                <div class="row">
+                    <div class="form-horizontal well well-sm col-md-6">
+                        <h3 class="text-center">Headset Information</h3>
+                        <div class="form-group">
+                            <label class="control-label" for="capHeight">Cap Height:</label>
+                            <div class="controls">
+                                <input class="input-mini" id="capHeight" data-bind="value: headSetTopCap" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Steerer Spacers:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: steeringSpacers" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal well well-sm col-md-6">
+                        <h3 class="text-center">Seat Information</h3>
+                        <div class="form-group">
+                            <label class="control-label">BB-Seat Distance:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: bbToSeatDistance" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Seat Tube Angle:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: seatTubeAngle" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Seat Length:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: seatLength" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-horizontal well well-sm col-md-6">
+                        <h3 class="text-center">Stem Information</h3>
+                        <div class="form-group">
+                            <label class="control-label">Length:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: stemLength" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Angle:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: stemAngle" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Steerer Clamp Ht.:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: stemThickness" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-horizontal well well-sm col-md-6">
+                        <h3 class="text-center">Aero Bar Information</h3>
+                        <div class="form-group">
+                            <label class="control-label">Aero Bar Spacers:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: aeroBarSpacers" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Arm Pad Spacers:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: armPadSpacers" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Arm Pad Offset:</label>
+                            <div class="controls">
+                                <input class="input-mini" data-bind="value: armPadOffset" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3 class="text-center">Calculated Geometry</h3>
+                    <dl class="dl-horizontal">
+                        <dt>Frame Stack:</dt>
+                        <dd data-bind="text: stackFormatted"></dd>
+                        <dt>Frame Reach:</dt>
+                        <dd data-bind="text: reachFormatted"></dd>
+                        <dt>Pad Stack:</dt>
+                        <dd data-bind="text: padStack"></dd>
+                        <dt>Pad Reach:</dt>
+                        <dd data-bind="text: padReach"></dd>
+                    </dl>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

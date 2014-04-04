@@ -4,12 +4,18 @@
         }
     });
 
-    // Durandal 2.x assumes no global libraries. It will ship expecting 
-    // Knockout and jQuery to be defined with requirejs. .NET 
-    // templates by default will set them up as standard script
-    // libs and then register them with require as follows: 
     define('jquery', function () { return jQuery; });
     define('knockout', ko);
 
-    define(['services/logger']);
+    define(['services/datacontext', 'services/logger'], boot);
+
+    function boot(datacontext, logger) {
+        return datacontext.primeData()
+                .fail(failedInitialization);
+
+        function failedInitialization(error) {
+            var msg = 'App initialization failed: ' + error.message;
+            logger.logError(msg, error, true);
+        }
+    }
 })();

@@ -7,21 +7,15 @@ define([],
 
         return logger;
 
-        function log(message, data, source, showToast) {
-            logIt(message, data, source, showToast, 'info');
+        function log(message, data, showToast) {
+            logIt(message, data, showToast, 'info');
         }
 
-        function logError(message, data, source, showToast) {
-            logIt(message, data, source, showToast, 'error');
+        function logError(message, data, showToast) {
+            logIt(message, data, showToast, 'error');
         }
 
-        function logIt(message, data, source, showToast, toastType) {
-            source = source ? '[' + source + '] ' : '';
-            if (data) {
-                
-            } else {
-                
-            }
+        function logIt(message, data, showToast, toastType) {
             if (showToast) {
                 if (toastType === 'error') {
                     toastr.error(message);

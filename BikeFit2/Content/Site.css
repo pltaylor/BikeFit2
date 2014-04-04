@@ -48,6 +48,11 @@ input[type="checkbox"].input-validation-error {
     left: 280px;
 }
 
+.frame-row
+{
+    height: 250px;
+}
+
 h2.page-title {
     font-size: 32px;
 }

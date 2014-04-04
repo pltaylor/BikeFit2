@@ -72,6 +72,7 @@ input[type="checkbox"].input-validation-error {
 
 .frame-row
 {
+    position: relative;
     height: 250px;
 }
 

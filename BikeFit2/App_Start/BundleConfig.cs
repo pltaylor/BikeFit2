@@ -26,7 +26,8 @@ namespace BikeFit2
                 "~/scripts/toastr.js",
                 "~/scripts/knockout-3.1.0.debug.js",
                 "~/scripts/q.js",
-                "~/scripts/breeze.debug.js"));
+                "~/scripts/breeze.debug.js",
+                "~/scripts/moment.js"));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Content/bootstrap.css",

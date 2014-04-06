@@ -32,7 +32,8 @@ namespace BikeFit2
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/toastr.css"));
+                      "~/Content/toastr.css",
+                      "~/Content/css/font-awesome.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/frames.js").Include(
                 "~/scripts/frames.js"));

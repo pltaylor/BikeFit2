@@ -1,5 +1,4 @@
-﻿
-(function () {
+﻿(function () {
     require.config({
         paths: {
         }

@@ -308,7 +308,7 @@
     <Content Include="Scripts\App\frames.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\App\fullBike.js">
+    <Content Include="Scripts\App\fullTriBike.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Scripts\modernizr-2.7.2.js" />

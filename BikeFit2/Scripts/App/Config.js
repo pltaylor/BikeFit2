@@ -7,7 +7,7 @@
     }
 
     function yOffset(input) {
-        return (245 - input);
+        return (200 - input);
     }
 
     var scalingFactor = .22;

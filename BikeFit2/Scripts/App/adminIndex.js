@@ -11,8 +11,7 @@
         'services/logger'],
     function (datacontext, logger) {
 
-        datacontext.primeData()
-               .then(applyViewModel)
+        Q.all([applyViewModel()])
                .fail(failedInitialization);
 
         function failedInitialization(error) {
@@ -22,9 +21,8 @@
 
         function applyViewModel() {
             var vm = viewModel();
-            vm.activate();
-
-            ko.applyBindings(vm);
+            vm.activate().then(
+                ko.applyBindings(vm));
         }
 
         function viewModel() {
@@ -127,10 +125,13 @@
             function activate() {
                 logger.log('Frames Admin View Activated', null, 'frames', false);
 
-                return datacontext.getAllManufacturers(manufacturers).then(function () {
-                    datacontext.getBikeModelsWithSizes(modelsWithSizes, manufacturers()[0].manufacturerID())
-                        .then(datacontext.getBikeTypes(bikeTypes));
-                });
+                return datacontext.getAllManufacturers(manufacturers)
+                    .then(function () {
+                        manufacturer(manufacturers()[0]);
+                    }).then(function () {
+                        datacontext.getBikeModelsWithSizes(modelsWithSizes, manufacturers()[0].manufacturerID())
+                            .then(datacontext.getBikeTypes(bikeTypes));
+                    });
             }
         }
 

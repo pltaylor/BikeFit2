@@ -21,10 +21,17 @@
 
         function applyViewModel() {
             var vm = viewModel();
-            vm.activate().then(
-                ko.applyBindings(vm));
+            vm.activate()
+                .then(
+                function() {
+                    applyBindings(vm);
+                });
         }
 
+        function applyBindings(vm) {
+            ko.applyBindings(vm);
+            logger.log("Bindings Applied", null, true);
+        }
         function viewModel() {
             var manufacturers = ko.observableArray();
             var manufacturer = ko.observable();
@@ -130,7 +137,9 @@
                         manufacturer(manufacturers()[0]);
                     }).then(function () {
                         datacontext.getBikeModelsWithSizes(modelsWithSizes, manufacturers()[0].manufacturerID())
-                            .then(datacontext.getBikeTypes(bikeTypes));
+                            .then(function() {
+                             datacontext.getBikeTypes(bikeTypes);
+                        });
                     });
             }
         }

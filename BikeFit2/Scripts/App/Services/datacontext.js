@@ -40,7 +40,7 @@
                     manufacturerObservable(data.results);
                 }
                 log('Retrieved [All Manufacturer] from remote data source',
-                    data, false);
+                    data, true);
             }
         };
         

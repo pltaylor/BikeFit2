@@ -3,8 +3,10 @@
         var entityQuery = breeze.EntityQuery,
             manager = configureBreezeManager();
 
+        var Predicate = breeze.Predicate;
+
         var entityNames = model.entityNames;
-        
+
         var createNewSize = function (modelId) {
             return manager.createEntity(entityNames.bikeSize, { sizeID: breeze.core.getUuid(), bikeModelID: modelId });
         };
@@ -23,10 +25,10 @@
                 this.sizes.valueHasMutated();
                 return newValue;
             };
-            
+
             return result;
         };
-        
+
         var getAllManufacturers = function (manufacturerObservable) {
             var query = entityQuery.from('Manufacturers')
                 .orderBy('name');
@@ -43,7 +45,7 @@
                     data, true);
             }
         };
-        
+
         var getManufacturers = function (manufacturerObservable) {
             var query = entityQuery.from('Manufacturers').where('isActive', '==', 'true')
                 .orderBy('name');
@@ -56,12 +58,11 @@
                 if (manufacturerObservable) {
                     manufacturerObservable(data.results);
                 }
-                log('Retrieved [Manufacturer] from remote data source',
-                    data, false);
+                log('Retrieved [Manufacturer] from remote data source', data, false);
             }
         };
 
-        var getBikeTypes = function(bikeTypeObservable) {
+        var getBikeTypes = function (bikeTypeObservable) {
             var query = entityQuery.from('BikeTypes');
 
             return manager.executeQuery(query)
@@ -72,18 +73,18 @@
                 if (bikeTypeObservable) {
                     bikeTypeObservable(data.results);
                 }
-                log('Retrieved [BikeTypes] from remote data source',
-                    data, false);
+                log('Retrieved [BikeTypes] from remote data source', data, false);
             }
         };
-        
-        var getBikeModels = function (bikeModelsObservable, manufacturerId) {
+
+        var getBikeModels = function (bikeModelsObservable, manufacturerId, bikeType) {
             if (manufacturerId == "00000000-0000-0000-0000-000000000000") {
                 bikeModelsObservable('');
                 return true;
             }
-            var query = entityQuery.from('BikeModels').where('manufactuerID', '==', manufacturerId)
-                .orderBy('name');
+            var p1 = new Predicate.create('manufactuerID', '==', manufacturerId);
+            var p2 = new Predicate.create('bikeTypeId', '==', bikeType);
+            var query = entityQuery.from('BikeModels').where(p1.and(p2)).orderBy('name');
 
             return manager.executeQuery(query)
                 .then(querySucceeded)
@@ -133,7 +134,7 @@
                     data, false);
             }
         };
-        
+
         var getBikeSizes = function (bikeSizesObservable, modelId) {
             var query = entityQuery.from('BikeSizes').where('bikeModelID', '==', modelId)
                 .orderBy('sortOrder').orderBy('size');
@@ -148,13 +149,10 @@
                     createNullo(entityNames.bikeSize, 'Size', intialValues);
                     bikeSizesObservable(data.results);
                 }
-                log('Retrieved [Bike Sizes] from remote data source',
-                    data, false);
-                
-                
+                log('Retrieved [Bike Sizes] from remote data source', data, false);
             }
         };
-        
+
         var cancelChanges = function () {
             var rejectedChanges = manager.rejectChanges();
             log('Canceled changes', null, true);
@@ -183,20 +181,20 @@
         manager.hasChangesChanged.subscribe(function (eventArgs) {
             hasChanges(eventArgs.hasChanges);
         });
-        
+
         var primeData = function () {
             var promise = Q.all([getManufacturers()])
                 .then(processLookups);
 
             return promise.then(success);
-            
+
             function success() {
                 datacontext.lookups = {
                     manufacturers: function ()
                     { return getLocal('Manufacturers', 'name', true); }
                 };
             }
-            
+
         };
 
         var datacontext = {
@@ -224,7 +222,7 @@
             }
             return manager.executeQueryLocally(query);
         }
-        
+
         function queryFailed(error) {
             var msg = 'Error retreiving data. ' + error.message;
             logger.logError(msg, error, true);
@@ -240,7 +238,7 @@
         function log(msg, data, showToast) {
             logger.log(msg, data, showToast);
         }
-        
+
         function processLookups() {
             model.createNullos(manager);
         }
@@ -251,4 +249,4 @@
             return manager.createEntity(entityName, initialValues, unchanged);
         }
         //#endregion
-});
+    });

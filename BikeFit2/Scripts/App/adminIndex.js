@@ -32,6 +32,7 @@
             ko.applyBindings(vm);
             logger.log("Bindings Applied", null, true);
         }
+
         function viewModel() {
             var manufacturers = ko.observableArray();
             var manufacturer = ko.observable();

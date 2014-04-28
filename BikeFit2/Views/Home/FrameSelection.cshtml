@@ -2,6 +2,12 @@
 <div class="row">
     <form class="form-horizontal">
         <div class="form-group">
+            <label class="col-sm-4 control-label" for="manufacturer">Bike Type:</label>
+            <div class="col-sm-8">
+                <select class="form-control" id="bikeType" data-bind="options: $parent.bikeTypes, optionsText: 'type', optionsValue: 'bikeTypeId', value: bikeType"></select>
+            </div>
+        </div>
+        <div class="form-group">
             <label class="col-sm-4 control-label" for="manufacturer">Manufacturer:</label>
             <div class="col-sm-8">
                 <select class="form-control" id="manufacturer" data-bind="options: $parent.manufacturers, optionsText: 'name', value: manufacturer"></select>
@@ -20,25 +26,25 @@
             </div>
         </div>
         <div data-bind="with: size">
-                <h3 class="text-center">Geometry</h3>
-                <dl class="dl-horizontal">
-                    <dt>Stack:</dt>
-                    <dd data-bind="text: stackFormatted"></dd>
-                    <dt>Reach:</dt>
-                    <dd data-bind="text: reachFormatted"></dd>
-                    <dt>Front Center:</dt>
-                    <dd data-bind="text: frontCenterFormatted"></dd>
-                    <dt>Rear Center:</dt>
-                    <dd data-bind="text: rearCenterFormatted"></dd>
-                    <dt>Head Tube:</dt>
-                    <dd data-bind="text: headTubeLengthFormatted"></dd>
-                    <dt>Min Seat Angle:</dt>
-                    <dd data-bind="text: minSeatAngleFormatted"></dd>
-                    <dt>Min Seat Angle:</dt>
-                    <dd data-bind="text: maxSeatAngleFormatted"></dd>
-                    <dt>Wheel Size:</dt>
-                    <dd data-bind="text: wheelSizeFormatted"></dd>
-                </dl>
-            </div>
+            <h3 class="text-center">Geometry</h3>
+            <dl class="dl-horizontal">
+                <dt>Stack:</dt>
+                <dd data-bind="text: stackFormatted"></dd>
+                <dt>Reach:</dt>
+                <dd data-bind="text: reachFormatted"></dd>
+                <dt>Front Center:</dt>
+                <dd data-bind="text: frontCenterFormatted"></dd>
+                <dt>Rear Center:</dt>
+                <dd data-bind="text: rearCenterFormatted"></dd>
+                <dt>Head Tube:</dt>
+                <dd data-bind="text: headTubeLengthFormatted"></dd>
+                <dt>Min Seat Angle:</dt>
+                <dd data-bind="text: minSeatAngleFormatted"></dd>
+                <dt>Min Seat Angle:</dt>
+                <dd data-bind="text: maxSeatAngleFormatted"></dd>
+                <dt>Wheel Size:</dt>
+                <dd data-bind="text: wheelSizeFormatted"></dd>
+            </dl>
+        </div>
     </form>
 </div>

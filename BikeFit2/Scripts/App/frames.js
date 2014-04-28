@@ -30,12 +30,15 @@
         function viewModel() {
             var manufacturers = ko.observableArray();
 
+            var bikeTypes = ko.observableArray();
+
             var frame1 = createFrame('Frame 1', 'bike1', 'blue');
             var frame2 = createFrame('Frame 2', 'bike2', 'green');
             var frame3 = createFrame('Frame 3', 'bike3', 'gray');
 
             var vm = {
                 activate: activate,
+                bikeTypes: bikeTypes,
                 frame1: frame1,
                 frame2: frame2,
                 frame3: frame3,
@@ -50,15 +53,21 @@
                 var manufacturesPromise = datacontext.lookups.manufacturers();
                 logger.log('Frames View Activated', null, 'frames', false);
 
-                return $.when(manufacturesPromise).then(function (results) {
+                return $.when(manufacturesPromise)
+                    .then(function (results) {
                     manufacturers(results);
-                });
+                })
+                    .then(function () {
+                        datacontext.getBikeTypes(bikeTypes);
+                    });
             }
 
             function createFrame(name, canvasName, color) {
+                var bikeType = ko.observable();
+
                 var manufacturer = ko.observable();
                 manufacturer.subscribe(function (newValue) {
-                    datacontext.getBikeModels(models, newValue.manufacturerID());
+                    datacontext.getBikeModels(models, newValue.manufacturerID(), bikeType());
                 });
 
                 var models = ko.observableArray();
@@ -76,6 +85,7 @@
 
                 var output = {
                     color: color,
+                    bikeType: bikeType,
                     manufacturer: manufacturer,
                     models: models,
                     model: model,

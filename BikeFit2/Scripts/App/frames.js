@@ -55,8 +55,8 @@
 
                 return $.when(manufacturesPromise)
                     .then(function (results) {
-                    manufacturers(results);
-                })
+                        manufacturers(results);
+                    })
                     .then(function () {
                         datacontext.getBikeTypes(bikeTypes);
                     });
@@ -64,6 +64,16 @@
 
             function createFrame(name, canvasName, color) {
                 var bikeType = ko.observable();
+
+                bikeType.subscribe(function () {
+                    if (models().length != 0) {
+                        models.removeAll();
+                    }
+                    if (sizes().length != 0) {
+                        sizes.removeAll();
+                    }
+                    manufacturer(manufacturers()[0]);
+                });
 
                 var manufacturer = ko.observable();
                 manufacturer.subscribe(function (newValue) {
@@ -73,7 +83,9 @@
                 var models = ko.observableArray();
                 var model = ko.observable();
                 model.subscribe(function (newValue) {
-                    datacontext.getBikeSizes(sizes, newValue.bikeModelID());
+                    if (newValue != null) {
+                        datacontext.getBikeSizes(sizes, newValue.bikeModelID());
+                    }
                     size(sizes()[0]);
                 });
 
@@ -96,11 +108,15 @@
                 return output;
 
                 function drawFrame(localSize) {
+
                     var drawingCanvas = document.getElementById(canvasName);
                     if (drawingCanvas.getContext) {
                         var ctx = drawingCanvas.getContext('2d');
                         // clear
                         ctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+                        if (localSize == null) {
+                            return;
+                        }
                         // Create the rear wheel
                         ctx.beginPath();
                         ctx.arc(localSize.rearWheelXloc(), localSize.rearWheelYloc(), localSize.wheelRadius(), 0, Math.PI * 2, true);

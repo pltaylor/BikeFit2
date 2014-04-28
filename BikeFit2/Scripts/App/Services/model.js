@@ -3,7 +3,8 @@
         var entityNames = {
             bikeModel: 'BikeModel',
             bikeSize: 'BikeSize',
-            manufacturer: 'Manufacturer'
+            manufacturer: 'Manufacturer',
+            bikeType: 'BikeType'
         };
 
         var model = {
@@ -258,11 +259,10 @@
                 return bikeSize.bbXloc() - xDelta;
             });
 
-            bikeSize.seatYLocation = ko.computed(function () {
+            bikeSize.seatYLocation = ko.computed(function() {
                 var yDelta = Math.cos((90 - bikeSize.seatTubeAngle()) * (Math.PI / 180)) * (bikeSize.bbToSeatDistance() * config.scalingFactor);
                 return bikeSize.bbYloc() - yDelta;
-            })
-            
+            });
         }
 
         //#endregion

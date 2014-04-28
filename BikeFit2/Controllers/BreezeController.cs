@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Http;
 
 using BikeFit2.DataLayer;
@@ -48,7 +49,15 @@ namespace BikeFit2.Controllers
         [HttpPost]
         public SaveResult SaveChanges(JObject saveBundle)
         {
-            return _ContextProvider.SaveChanges(saveBundle);
+            try
+            {
+                return _ContextProvider.SaveChanges(saveBundle);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return null;
         }
 	}
 }

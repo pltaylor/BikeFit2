@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
             <label>Bike Type:</label>
-            <select class="form-control" data-bind="options: $parent.bikeTypes(), optionsText: 'type', optionsValue: 'bikeTypeId', value: 'bikeType'"></select>
+            <select class="form-control" data-bind="options: $parent.bikeTypes(), optionsText: 'type', value: bikeType"></select>
         </div>
         <div class="form-group">
             <label>Release Date:</label>
@@ -87,7 +87,7 @@
                     <input class="form-control col-md-1" data-bind="value: maxSeatAngle" placeholder="Max. Seat Angle" />
                 </td>
                 <td>
-                    <select class="form-control col-md-1" data-bind="options: $parents[1].wheelSizes(), optionsText: 'name', optionsValue: 'value', value: 'wheelSize'"></select>
+                    <select class="form-control col-md-1" data-bind="options: $parents[1].wheelSizes(), optionsText: 'name', optionsValue: 'value', value: wheelSize"></select>
                 </td>
             </tr>
         </tbody>

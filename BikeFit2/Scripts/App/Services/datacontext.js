@@ -13,12 +13,13 @@
 
         var createNewModel = function (manufacturerId) {
             var result = manager.createEntity(entityNames.bikeModel,
-                {
-                    bikeModelID: breeze.core.getUuid(),
-                    manufactuerID: manufacturerId,
-                    manufacturedStartDate: new Date(2000, 1, 1),
-                    manufacturedEndDate: new Date()
-                });
+            {
+                bikeModelID: breeze.core.getUuid(),
+                manufactuerID: manufacturerId,
+                bikeTypeId: 1,
+                manufacturedStartDate: new Date(2000, 1, 1),
+                manufacturedEndDate: new Date()
+            });
 
             result.addNewSize = function () {
                 var newValue = createNewSize(this.bikeModelID());

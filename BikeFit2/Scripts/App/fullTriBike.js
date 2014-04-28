@@ -53,7 +53,7 @@
                 function createFrame(name, canvasName, color) {
                     var manufacturer = ko.observable();
                     manufacturer.subscribe(function (newValue) {
-                        datacontext.getBikeModels(models, newValue.manufacturerID());
+                        datacontext.getBikeModels(models, newValue.manufacturerID(), 1);
                     });
 
                     var models = ko.observableArray();

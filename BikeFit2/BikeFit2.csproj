@@ -128,11 +128,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Web.Common">
-      <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.Web.Common.3.2.1.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject.Web.Mvc">
-      <HintPath>..\packages\Ninject.MVC3.3.2.0.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -237,6 +239,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BreezeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="DataLayer\BikeFitContext.cs" />
     <Compile Include="DataLayer\IBikeFitContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -246,12 +249,28 @@
     <Compile Include="Migrations\201404041537363_Intial.Designer.cs">
       <DependentUpon>201404041537363_Intial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404282139193_IntegrateApplicationContextAndBikeFitContext.cs" />
+    <Compile Include="Migrations\201404282139193_IntegrateApplicationContextAndBikeFitContext.Designer.cs">
+      <DependentUpon>201404282139193_IntegrateApplicationContextAndBikeFitContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404291346172_UpdateRoles.cs" />
+    <Compile Include="Migrations\201404291346172_UpdateRoles.Designer.cs">
+      <DependentUpon>201404291346172_UpdateRoles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404301244012_RemoveFirstAndLastName.cs" />
+    <Compile Include="Migrations\201404301244012_RemoveFirstAndLastName.Designer.cs">
+      <DependentUpon>201404301244012_RemoveFirstAndLastName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201404301346463_GoBackToIdentityRole.cs" />
+    <Compile Include="Migrations\201404301346463_GoBackToIdentityRole.Designer.cs">
+      <DependentUpon>201404301346463_GoBackToIdentityRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BikeModel.cs" />
     <Compile Include="Models\BikeSize.cs" />
     <Compile Include="Models\BikeType.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\Manufacturer.cs" />
     <Compile Include="Models\WheelSize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -364,6 +383,15 @@
     <Content Include="Scripts\toastr.min.js.map" />
     <Content Include="Views\Home\FullTriBIke.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\UserRoles.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -376,6 +404,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201404041537363_Intial.resx">
       <DependentUpon>201404041537363_Intial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404282139193_IntegrateApplicationContextAndBikeFitContext.resx">
+      <DependentUpon>201404282139193_IntegrateApplicationContextAndBikeFitContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404291346172_UpdateRoles.resx">
+      <DependentUpon>201404291346172_UpdateRoles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404301244012_RemoveFirstAndLastName.resx">
+      <DependentUpon>201404301244012_RemoveFirstAndLastName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404301346463_GoBackToIdentityRole.resx">
+      <DependentUpon>201404301346463_GoBackToIdentityRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

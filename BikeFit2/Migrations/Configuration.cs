@@ -1,19 +1,23 @@
+using BikeFit2.DataLayer;
+using BikeFit2.Models;
+
 namespace BikeFit2.Migrations
 {
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<BikeFit2.DataLayer.BikeFitContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<BikeFitContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(BikeFit2.DataLayer.BikeFitContext context)
+        protected override void Seed(BikeFitContext context)
         {
+            AddUserAndRole(context);
+
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -26,6 +30,15 @@ namespace BikeFit2.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+        }
+
+        bool AddUserAndRole(BikeFitContext context)
+        {
+            var rm = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            IdentityResult ir = rm.Create(new IdentityRole("Administrator"));
+            IdentityResult ir2 = rm.Create(new IdentityRole("Manufacturer"));
+            
+            return ir.Succeeded;
         }
     }
 }

@@ -1,11 +1,15 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration;
 using BikeFit2.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BikeFit2.DataLayer
 {
-    public class BikeFitContext : DbContext, IBikeFitContext
+    public class BikeFitContext : IdentityDbContext<IdentityUser>, IBikeFitContext
     {
-        public BikeFitContext() : base("DefaultConnection")
+
+        public BikeFitContext() :  base("DefaultConnection")
         {
         }
 

@@ -251,25 +251,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404041537363_Intial.cs" />
-    <Compile Include="Migrations\201404041537363_Intial.Designer.cs">
-      <DependentUpon>201404041537363_Intial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404282139193_IntegrateApplicationContextAndBikeFitContext.cs" />
-    <Compile Include="Migrations\201404282139193_IntegrateApplicationContextAndBikeFitContext.Designer.cs">
-      <DependentUpon>201404282139193_IntegrateApplicationContextAndBikeFitContext.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404291346172_UpdateRoles.cs" />
-    <Compile Include="Migrations\201404291346172_UpdateRoles.Designer.cs">
-      <DependentUpon>201404291346172_UpdateRoles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404301244012_RemoveFirstAndLastName.cs" />
-    <Compile Include="Migrations\201404301244012_RemoveFirstAndLastName.Designer.cs">
-      <DependentUpon>201404301244012_RemoveFirstAndLastName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404301346463_GoBackToIdentityRole.cs" />
-    <Compile Include="Migrations\201404301346463_GoBackToIdentityRole.Designer.cs">
-      <DependentUpon>201404301346463_GoBackToIdentityRole.cs</DependentUpon>
+    <Compile Include="Migrations\201404301926153_intial.cs" />
+    <Compile Include="Migrations\201404301926153_intial.Designer.cs">
+      <DependentUpon>201404301926153_intial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -408,20 +392,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201404041537363_Intial.resx">
-      <DependentUpon>201404041537363_Intial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404282139193_IntegrateApplicationContextAndBikeFitContext.resx">
-      <DependentUpon>201404282139193_IntegrateApplicationContextAndBikeFitContext.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404291346172_UpdateRoles.resx">
-      <DependentUpon>201404291346172_UpdateRoles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404301244012_RemoveFirstAndLastName.resx">
-      <DependentUpon>201404301244012_RemoveFirstAndLastName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404301346463_GoBackToIdentityRole.resx">
-      <DependentUpon>201404301346463_GoBackToIdentityRole.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404301926153_intial.resx">
+      <DependentUpon>201404301926153_intial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

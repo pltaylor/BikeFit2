@@ -7,13 +7,13 @@ namespace BikeFit2.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class IntegrateApplicationContextAndBikeFitContext : IMigrationMetadata
+    public sealed partial class intial : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(IntegrateApplicationContextAndBikeFitContext));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(intial));
         
         string IMigrationMetadata.Id
         {
-            get { return "201404282139193_IntegrateApplicationContextAndBikeFitContext"; }
+            get { return "201404301926153_intial"; }
         }
         
         string IMigrationMetadata.Source

@@ -318,7 +318,7 @@ namespace BikeFit2.Controllers
             base.Dispose(disposing);
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var Db = new BikeFitContext();
@@ -332,7 +332,7 @@ namespace BikeFit2.Controllers
             return View(model);
         }
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id, ManageMessageId? Message = null)
         {
             var Db = new BikeFitContext();
@@ -344,7 +344,7 @@ namespace BikeFit2.Controllers
 
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(EditUserViewModel model)
         {
@@ -363,7 +363,7 @@ namespace BikeFit2.Controllers
         }
 
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id = null)
         {
             var Db = new BikeFitContext();
@@ -379,7 +379,7 @@ namespace BikeFit2.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(string id)
         {
             var Db = new BikeFitContext();
@@ -390,7 +390,7 @@ namespace BikeFit2.Controllers
         }
 
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult UserRoles(string id)
         {
             var Db = new BikeFitContext();
@@ -401,7 +401,7 @@ namespace BikeFit2.Controllers
 
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public ActionResult UserRoles(SelectUserRolesViewModel model)
         {

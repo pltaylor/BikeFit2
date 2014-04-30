@@ -16,6 +16,10 @@ namespace BikeFit2.Migrations
 
         protected override void Seed(BikeFitContext context)
         {
+            var configuration = new Configuration();
+            var migrator = new DbMigrator(configuration);
+            migrator.Update();
+
             AddUserAndRole(context);
 
             //  This method will be called after migrating to the latest version.

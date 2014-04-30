@@ -34,7 +34,7 @@ namespace BikeFit2.Controllers
 
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = 
             "RoleName,Description")]RoleViewModel model)
         {
@@ -58,7 +58,7 @@ namespace BikeFit2.Controllers
         }
 
 
-       // [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(string id)
         {
             // It's actually the Role.Name tucked into the id param:
@@ -69,7 +69,7 @@ namespace BikeFit2.Controllers
 
 
         [HttpPost]
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = 
             "RoleName,OriginalRoleName,Description")] EditRoleViewModel model)
         {
@@ -85,7 +85,7 @@ namespace BikeFit2.Controllers
         }
 
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -102,7 +102,7 @@ namespace BikeFit2.Controllers
         }
 
 
-        //[Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(string id)
         {

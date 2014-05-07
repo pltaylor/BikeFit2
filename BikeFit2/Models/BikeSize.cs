@@ -23,24 +23,24 @@ namespace BikeFit2.Models
 
         public string Size { get; set; }
 
-        public WheelSize WheelSize { get; set; } //
+        public WheelSize WheelSize { get; set; }
 
         public double HeadTubeAngle { get; set; }
 
         public double BottomBracketDrop { get; set; }
 
-        public double HeadTubeLength { get; set; } //
+        public double HeadTubeLength { get; set; }
 
-        public double FrontCenter { get; set; } //
+        public double FrontCenter { get; set; }
 
         public double RearCenter { get; set; }
 
-        public double Stack { get; set; } //
+        public double Stack { get; set; }
 
-        public double Reach { get; set; } //
+        public double Reach { get; set; }
 
-        public double MaxSeatAngle { get; set; } //
+        public double MaxSeatAngle { get; set; }
 
-        public double MinSeatAngle { get; set; } //
+        public double MinSeatAngle { get; set; }
     }
 }

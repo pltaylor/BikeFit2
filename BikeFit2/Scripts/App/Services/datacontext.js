@@ -171,7 +171,7 @@
 
             function saveFailed(error) {
                 var msg = 'Save failed: ' + error.message;
-                logError(msg, error);
+                log(msg, error, true);
                 error.message = msg;
                 throw error;
             }

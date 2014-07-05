@@ -40,6 +40,8 @@
             var modelsWithSizes = ko.observableArray();
             var bikeTypes = ko.observableArray();
 
+            datacontext.getBikeTypes(bikeTypes);
+
             manufacturer.subscribe(function (newValue) {
                 datacontext.getBikeModelsWithSizes(modelsWithSizes, newValue.manufacturerID());
             });

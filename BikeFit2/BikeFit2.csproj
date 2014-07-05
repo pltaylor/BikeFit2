@@ -252,6 +252,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\MeasurementAdminController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BreezeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -264,6 +265,10 @@
     <Compile Include="Migrations\201404301926153_intial.cs" />
     <Compile Include="Migrations\201404301926153_intial.Designer.cs">
       <DependentUpon>201404301926153_intial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407051238142_AddEnteredDateApproved.cs" />
+    <Compile Include="Migrations\201407051238142_AddEnteredDateApproved.Designer.cs">
+      <DependentUpon>201407051238142_AddEnteredDateApproved.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -397,6 +402,7 @@
     <Content Include="Views\Account\UserRoles.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
+    <Content Include="Views\MeasurementAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -408,6 +414,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201404301926153_intial.resx">
       <DependentUpon>201404301926153_intial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407051238142_AddEnteredDateApproved.resx">
+      <DependentUpon>201407051238142_AddEnteredDateApproved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

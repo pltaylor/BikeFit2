@@ -42,5 +42,9 @@ namespace BikeFit2.Models
         public double MaxSeatAngle { get; set; }
 
         public double MinSeatAngle { get; set; }
+
+        public DateTime EnteredDate { get; set; }
+
+        public bool Approved { get; set; }
     }
 }

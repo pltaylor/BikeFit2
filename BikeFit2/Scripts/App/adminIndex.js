@@ -139,11 +139,8 @@
                     .then(function () {
                         manufacturer(manufacturers()[0]);
                     }).then(function () {
-                        datacontext.getBikeModelsWithSizes(modelsWithSizes, manufacturers()[0].manufacturerID())
-                            .then(function() {
-                             datacontext.getBikeTypes(bikeTypes);
-                        });
-                    });
+                    datacontext.getBikeModelsWithSizes(modelsWithSizes, manufacturers()[0].manufacturerID());
+                });
             }
         }
 

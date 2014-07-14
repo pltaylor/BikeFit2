@@ -17,6 +17,8 @@ namespace BikeFit2.Models
         [ForeignKey("BikeModel")]
         public Guid BikeModelID { get; set; }
 
+        public String UserID { get; set; }
+
         public BikeModel BikeModel { get; set; }
 
         public int SortOrder { get; set; }

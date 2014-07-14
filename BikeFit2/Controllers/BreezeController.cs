@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-
+using System.Web.Security;
 using BikeFit2.DataLayer;
 using BikeFit2.Models;
 using Breeze.ContextProvider;
@@ -96,6 +96,7 @@ namespace BikeFit2.Controllers
                         newBikeSize.SortOrder = bikeSize.SortOrder;
                         newBikeSize.Stack = bikeSize.Stack;
                         newBikeSize.WheelSize = bikeSize.WheelSize;
+                        newBikeSize.UserID = User.Identity.Name;
 
                         var ei = _ContextProvider.CreateEntityInfo(newBikeSize);
                         tempAddList.Add(ei);

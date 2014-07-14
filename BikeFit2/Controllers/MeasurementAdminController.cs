@@ -6,8 +6,7 @@ namespace BikeFit2.Controllers
     {
         //
         // GET: /Admin/
-        [Authorize(Roles = "MeasurementAdmin")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "MeasurementAdmin, Admin")]
         public ActionResult Index()
         {
             return View();

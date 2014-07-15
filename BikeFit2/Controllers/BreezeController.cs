@@ -55,7 +55,7 @@ namespace BikeFit2.Controllers
                 var uniqueBikeSizes = _ContextProvider
                     .Context
                     .BikeSizes
-                    .SqlQuery("select * from (select [SizeID], [BikeModelID], [SortOrder], [Size], [WheelSize], [HeadTubeAngle], [BottomBracketDrop], [HeadTubeLength], [FrontCenter], [RearCenter], [Stack], [Reach], [MaxSeatAngle], [MinSeatAngle], [EnteredDate], [Approved], [UserID] ,row_number() over(partition by [Size] order by [EnteredDate] desc) as roworder from BikeSizes) temp where roworder = 1").ToList();
+                    .SqlQuery("select * from (select [SizeID], [BikeModelID], [SortOrder], [Size], [WheelSize], [HeadTubeAngle], [BottomBracketDrop], [HeadTubeLength], [FrontCenter], [RearCenter], [Stack], [Reach], [MaxSeatAngle], [MinSeatAngle], [EnteredDate], [Approved], [UserID], row_number() over(partition by CHECKSUM([Size],[BikeModelID]) order by [EnteredDate] desc) as roworder from BikeSizes) temp where roworder = 1").ToList();
                 return uniqueBikeSizes.OrderBy(x=>x.Size).Where(x=>x.Approved).AsQueryable();
             }
             catch (Exception e)

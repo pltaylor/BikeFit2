@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
-using System.Web.Security;
 using BikeFit2.DataLayer;
 using BikeFit2.Models;
 using Breeze.ContextProvider;
@@ -46,6 +45,24 @@ namespace BikeFit2.Controllers
         public IQueryable<BikeSize> BikeSizes()
         {
             return _ContextProvider.Context.BikeSizes;
+        }
+
+        [HttpGet]
+        public IQueryable<BikeSize> GetUniqueBikeSizes()
+        {
+            try
+            {
+                var uniqueBikeSizes = _ContextProvider
+                    .Context
+                    .BikeSizes
+                    .SqlQuery("select * from (select [SizeID], [BikeModelID], [SortOrder], [Size], [WheelSize], [HeadTubeAngle], [BottomBracketDrop], [HeadTubeLength], [FrontCenter], [RearCenter], [Stack], [Reach], [MaxSeatAngle], [MinSeatAngle], [EnteredDate], [Approved], [UserID] ,row_number() over(partition by [Size] order by [EnteredDate] desc) as roworder from BikeSizes) temp where roworder = 1").ToList();
+                return uniqueBikeSizes.OrderBy(x=>x.Size).Where(x=>x.Approved).AsQueryable();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return null;
         }
 
         [HttpPost]
@@ -105,7 +122,7 @@ namespace BikeFit2.Controllers
                     }
                 }
             }
-            
+
             List<EntityInfo> fooInfos;
             if (!saveMap.TryGetValue(typeof(BikeSize), out fooInfos))
             {
@@ -119,7 +136,7 @@ namespace BikeFit2.Controllers
             {
                 fooInfos.Remove(tempRemoveList[i]);
             }
-            
+
             // return the updated saveMap
             return saveMap;
         }

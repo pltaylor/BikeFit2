@@ -154,6 +154,23 @@
             }
         };
 
+        var getUniqueBikeSizes = function (bikeSizesObservable, modelId) {
+            var query = entityQuery.from('GetUniqueBikeSizes').where('bikeModelID', '==', modelId);
+
+            return manager.executeQuery(query)
+                .then(querySucceeded)
+                .fail(queryFailed);
+
+            function querySucceeded(data) {
+                if (bikeSizesObservable) {
+                    var intialValues = { size: ' Select a Size', sizeID: breeze.core.getUuid(), bikeModelID: modelId };
+                    createNullo(entityNames.bikeSize, 'Size', intialValues);
+                    bikeSizesObservable(data.results);
+                }
+                log('Retrieved [Bike Sizes] from remote data source', data, false);
+            }
+        };
+
         var cancelChanges = function () {
             var rejectedChanges = manager.rejectChanges();
             log('Canceled changes', null, true);
@@ -206,6 +223,7 @@
             getBikeModels: getBikeModels,
             getBikeModelsWithSizes: getBikeModelsWithSizes,
             getBikeSizes: getBikeSizes,
+            getUniqueBikeSizes: getUniqueBikeSizes,
             hasChanges: hasChanges,
             primeData: primeData,
             cancelChanges: cancelChanges,

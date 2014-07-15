@@ -84,7 +84,7 @@
                 var model = ko.observable();
                 model.subscribe(function (newValue) {
                     if (newValue != null) {
-                        datacontext.getBikeSizes(sizes, newValue.bikeModelID());
+                        datacontext.getUniqueBikeSizes(sizes, newValue.bikeModelID());
                     }
                     size(sizes()[0]);
                 });

@@ -1,12 +1,13 @@
 ﻿using System.Data.Entity;
+using BikeFit2.Migrations;
 using BikeFit2.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BikeFit2.DataLayer
 {
+    [DbConfigurationType(typeof(Configuration))] 
     public class BikeFitContext : IdentityDbContext<IdentityUser>, IBikeFitContext
     {
-
         public BikeFitContext() :  base("DefaultConnection")
         {
         }

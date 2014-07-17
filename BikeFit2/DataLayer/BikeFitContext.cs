@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration;
+﻿using System.Data.Entity;
 using BikeFit2.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 

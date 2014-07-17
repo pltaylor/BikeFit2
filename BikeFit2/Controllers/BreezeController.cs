@@ -41,6 +41,7 @@ namespace BikeFit2.Controllers
             return _ContextProvider.Context.BikeModels;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IQueryable<BikeSize> BikeSizes()
         {

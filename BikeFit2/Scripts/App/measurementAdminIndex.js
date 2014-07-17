@@ -43,7 +43,7 @@
             datacontext.getBikeTypes(bikeTypes);
 
             manufacturer.subscribe(function (newValue) {
-                datacontext.getBikeModelsWithSizes(modelsWithSizes, newValue.manufacturerID());
+                datacontext.getUniqueBikeModelsWithSizes(modelsWithSizes, newValue.manufacturerID());
             });
 
             var createNewModel = function () {

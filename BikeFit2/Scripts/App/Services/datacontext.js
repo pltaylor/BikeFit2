@@ -136,6 +136,34 @@
             }
         };
 
+        var getUniqueBikeModelsWithSizes = function (bikeModelsObservable, manufacturerId) {
+            var query = entityQuery.from('BikeModels').where('manufactuerID', '==', manufacturerId)
+                .orderBy('name');
+
+            return manager.executeQuery(query)
+                .then(querySucceeded)
+                .fail(queryFailed);
+
+            function querySucceeded(data) {
+                if (bikeModelsObservable) {
+                    for (var i = 0; i < data.results.length; i++) {
+                        datacontext.getUniqueBikeSizes(data.results[i].sizes, data.results[i].bikeModelID());
+
+                        // add new size function
+                        data.results[i].addNewSize = function () {
+                            var newValue = createNewSize(this.bikeModelID());
+                            this.sizes.valueHasMutated();
+                            return newValue;
+                        };
+                    }
+                    bikeModelsObservable(data.results);
+
+                }
+                log('Retrieved [Bike Models With Sizes] from remote data source',
+                    data, false);
+            }
+        };
+
         var getBikeSizes = function (bikeSizesObservable, modelId) {
             var query = entityQuery.from('BikeSizes').where('bikeModelID', '==', modelId)
                 .orderBy('sortOrder').orderBy('size');
@@ -222,6 +250,7 @@
             getBikeTypes: getBikeTypes,
             getBikeModels: getBikeModels,
             getBikeModelsWithSizes: getBikeModelsWithSizes,
+            getUniqueBikeModelsWithSizes: getUniqueBikeModelsWithSizes,
             getBikeSizes: getBikeSizes,
             getUniqueBikeSizes: getUniqueBikeSizes,
             hasChanges: hasChanges,

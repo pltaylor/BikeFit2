@@ -41,13 +41,6 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
-.frame-canvas
-{
-    position: absolute;
-    top: 0;
-    left: 280px;
-}
-
 .navbar .brand {
     padding: 6px 30px 12px 30px;
     margin-bottom: -8px;
@@ -68,12 +61,6 @@ input[type="checkbox"].input-validation-error {
     text-transform: initial;
     text-decoration: none;
     color: #0081C2;
-}
-
-.frame-row
-{
-    position: relative;
-    height: 210px;
 }
 
 h2.page-title {

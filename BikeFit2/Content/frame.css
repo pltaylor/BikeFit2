@@ -17,7 +17,3 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-
-.dl-horizontal dd {
-    margin-left: 180px;
-}

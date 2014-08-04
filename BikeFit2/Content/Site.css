@@ -73,3 +73,7 @@ input[type="checkbox"].input-validation-error {
 h2.page-title {
     font-size: 32px;
 }
+
+.dl-horizontal dd {
+    margin-left: 180px;
+}

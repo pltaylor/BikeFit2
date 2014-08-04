@@ -1,5 +1,4 @@
 ﻿using System.Data.Entity.Migrations;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -22,9 +21,6 @@ namespace BikeFit2
             var configuration = new Configuration();
             var migrator = new DbMigrator(configuration);
             migrator.Update();
-
-            // allow site to be loaded in iframes
-            AntiForgeryConfig.SuppressXFrameOptionsHeader = true;
         }
     }
 }

@@ -1,10 +1,23 @@
-﻿.frame-canvas
-{
+﻿.frame-canvas {
     position: absolute;
     top: 0;
 }
-.frame-row
-{
+
+.frame-row {
     position: relative;
     height: 210px;
+}
+
+.dl-horizontal dt {
+    float: left;
+    width: 160px;
+    clear: left;
+    text-align: right;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dl-horizontal dd {
+    margin-left: 180px;
 }

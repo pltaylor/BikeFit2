@@ -63,6 +63,13 @@ input[type="checkbox"].input-validation-error {
     color: #0081C2;
 }
 
+.frame-canvas
+{
+    position: absolute;
+    top: 0;
+    left: 280px;
+}
+
 h2.page-title {
     font-size: 32px;
 }

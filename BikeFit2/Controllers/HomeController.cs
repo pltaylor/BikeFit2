@@ -1,17 +1,9 @@
 ﻿using System.Web.Mvc;
-using BikeFit2.DataLayer;
 
 namespace BikeFit2.Controllers
 {
     public class HomeController : Controller
     {
-        private IBikeFitContext _BikeFitContext;
-
-        public HomeController(IBikeFitContext bikeFitContext)
-        {
-            _BikeFitContext = bikeFitContext;
-        }
-
         public ActionResult Index()
         {
             return View();
@@ -29,7 +21,6 @@ namespace BikeFit2.Controllers
 
         public ViewResult FrameComparerSlowtwitch()
         {
-
             return View("Index", "_SlowtwitchLayout");
         }
     }

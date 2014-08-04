@@ -410,6 +410,7 @@
     <Content Include="Views\Shared\EditorTemplates\SelectRoleEditorViewModel.cshtml" />
     <Content Include="Views\MeasurementAdmin\Index.cshtml" />
     <Content Include="Scripts\toastr.min.js.map" />
+    <Content Include="Views\Shared\_SlowtwitchLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -26,5 +26,11 @@ namespace BikeFit2.Controllers
         {
             return PartialView();
         }
+
+        public ViewResult FrameComparerSlowtwitch()
+        {
+
+            return View("Index", "_SlowtwitchLayout");
+        }
     }
 }

@@ -295,6 +295,7 @@
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\frame.css" />
     <Content Include="Content\icon.png" />
+    <Content Include="Content\slowtwitch.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="Error.html" />

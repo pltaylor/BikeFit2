@@ -1,4 +1,9 @@
 ﻿
-body {
+/*body {
     font: normal 11px tahoma, geneva, verdana, sans-serif;
+}*/
+
+.preloader {
+    width: 0;
+    height: 0;
 }

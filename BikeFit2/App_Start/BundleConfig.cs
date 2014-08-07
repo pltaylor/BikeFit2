@@ -34,14 +34,14 @@ namespace BikeFit2
                       "~/Content/site.css",
                       "~/Content/frame.css",
                       "~/Content/toastr.css",
-                      "~/Content/css/font-awesome.css",
-                       "~/Content/css/slowtwitch.css"));
+                      "~/Content/css/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/bundles/frameCss").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/frame.css",
                       "~/Content/toastr.css",
-                      "~/Content/css/font-awesome.css"));
+                      "~/Content/css/font-awesome.css",
+                       "~/Content/css/slowtwitch.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/frames.js").Include(
                 "~/scripts/frames.js"));

@@ -33,7 +33,6 @@ namespace BikeFit2
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/frame.css",
-                       "~/Content/slowtwitch.css",
                       "~/Content/toastr.css",
                       "~/Content/css/font-awesome.css"));
 

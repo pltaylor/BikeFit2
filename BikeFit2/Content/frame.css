@@ -17,3 +17,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.form-horizontal .control-label {
+    padding-top: 10px;
+    margin-bottom: 0;
+    text-align: right;
+    font-size: 12px;
+}

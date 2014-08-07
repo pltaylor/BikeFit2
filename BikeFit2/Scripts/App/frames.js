@@ -51,7 +51,8 @@
             //#region Internal Methods
             function activate() {
                 var manufacturesPromise = datacontext.lookups.manufacturers();
-                logger.log('Frames View Activated', null, 'frames', false);
+                logger.log('Frames View Activated', null, false);
+                $('.preloader').remove();
 
                 return $.when(manufacturesPromise)
                     .then(function (results) {

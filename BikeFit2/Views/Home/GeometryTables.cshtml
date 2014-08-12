@@ -1,5 +1,5 @@
 ﻿@using BikeFit2.Models
-@model List<BikeFit2.Models.Manufacturer>
+@model List<Manufacturer>
 
 @foreach (var manufacturer in Model)
 {
@@ -30,10 +30,10 @@
                         <td>@size.Stack</td>
                         <td>@size.Reach</td>
                         <td>@size.FrontCenter</td>
-                        <td>@size.HeadTubeAngle</td>
+                        <td>@size.HeadTubeAngle + "°"</td>
                         <td>@size.HeadTubeLength</td>
-                        <td>@size.MinSeatAngle</td>
-                        <td>@size.MaxSeatAngle</td>
+                        <td>@size.MinSeatAngle + "°"</td>
+                        <td>@size.MaxSeatAngle + "°"</td>
                         <td>
                             @if (size.WheelSize == WheelSize.SevenHundred)
                             {

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Web.Mvc;
 using BikeFit2.DataLayer;
 
@@ -31,6 +32,7 @@ namespace BikeFit2.Controllers
         public ViewResult GeometryTables()
         {
             var manufacturers = _Context.Manufacturers.Where(x=>x.IsActive);
+            
             return View("GeometryTables", "_SlowtwitchLayout", manufacturers.ToList());
         }
     }

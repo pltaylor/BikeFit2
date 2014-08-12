@@ -26,7 +26,8 @@
 }
 .preloader {
     position: fixed;
-    width: 100%;
+    margin: -150px;
+    width: 200%;
     height: 100%;
     z-Index: 1000;
     background: #000;
@@ -39,7 +40,7 @@
         height: 40px;
         margin-Top: -10px;
         margin-Left: -50px;
-        left: 50%;
+        left: 30%;
         top: 50%;
         z-Index: 1000;
     }

@@ -39,7 +39,7 @@ namespace BikeFit2.Controllers
                 manufacturer.Models = manufacturer.Models.OrderBy(m => m.Name).ToList();
                 foreach (var model in manufacturer.Models)
                 {
-                    model.Sizes = model.Sizes.Where(m => m.Approved).OrderBy(m=>m.Size).ThenBy(m => m.SortOrder).ToList();
+                    model.Sizes = model.Sizes.Where(m => m.Approved).OrderBy(m => m.SortOrder).ThenBy(m=>m.Size).ToList();
                 }
             }
             

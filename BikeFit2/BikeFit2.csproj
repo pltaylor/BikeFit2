@@ -281,6 +281,7 @@
     <Compile Include="Models\BikeType.cs" />
     <Compile Include="Models\IdentityManager.cs" />
     <Compile Include="Models\Manufacturer.cs" />
+    <Compile Include="Models\ViewModels\GeometryTableViewModel.cs" />
     <Compile Include="Models\WheelSize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

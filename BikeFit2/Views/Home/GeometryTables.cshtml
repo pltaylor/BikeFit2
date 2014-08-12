@@ -1,7 +1,12 @@
 ﻿@using BikeFit2.Models
-@model List<Manufacturer>
+@model BikeFit2.Models.ViewModels.GeometryTableViewModel
 
-@foreach (var manufacturer in Model)
+@Html.DropDownListFor(model => model.Manufacturer, Model.ManufacturerList)
+
+@Html.DropDownListFor(model => model.BikeType, Model.BikeTypesList)
+
+
+@foreach (var manufacturer in Model.Manufacturers)
 {
     <h2 class ="page-header">@manufacturer.Name</h2>
 

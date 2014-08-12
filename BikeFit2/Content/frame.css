@@ -27,7 +27,8 @@
 
 .preloader {
     position: absolute;
-    width: 100%;
+    margin: -100px;
+    width: 200%;
     height: 100%;
     z-Index: 1000;
     background: #000;

@@ -10,19 +10,33 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th></th> <!-- space here for the models -->
                     <th>Size</th>
                     <th>Stack</th>
                     <th>Reach</th>
-                    <th>Trail</th>
                     <th>Front Center</th>
-                    <th>Head Tube</th>
-                    <th>Head Set</th>
+                    <th>Head Tube Angle</th>
+                    <th>Head Tube Length</th>
                     <th>Seat Angle (Min)</th>
                     <th>Seat Angle (Max)</th>
-                    <th>650?</th>
+                    <th>Wheel Size</th>
                 </tr>
             </thead>
+            <tbody>
+                @foreach(var size in bikeModel.Sizes)
+                {
+                    <tr>
+                        <td>@size.Size</td>
+                        <td>@size.Stack</td>
+                        <td>@size.Reach</td>
+                        <td>@size.FrontCenter</td>
+                        <td>@size.HeadTubeAngle</td>
+                        <td>@size.HeadTubeLength</td>
+                        <td>@size.MinSeatAngle</td>
+                        <td>@size.MaxSeatAngle</td>
+                        <td>@size.WheelSize</td>
+                    </tr>
+                } 
+            </tbody>
         </table>
     }
 

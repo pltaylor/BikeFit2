@@ -30,7 +30,7 @@ namespace BikeFit2.Controllers
 
         public ViewResult GeometryTables()
         {
-            var manufacturers = _Context.Manufacturers;
+            var manufacturers = _Context.Manufacturers.Where(x=>x.IsActive);
             return View("GeometryTables", "_SlowtwitchLayout", manufacturers.ToList());
         }
     }

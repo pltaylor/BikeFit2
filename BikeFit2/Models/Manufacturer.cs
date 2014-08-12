@@ -6,12 +6,12 @@ namespace BikeFit2.Models
 {
     public class Manufacturer
     {
-        private ICollection<BikeModel> models;
+        private ICollection<BikeModel> _Models;
 
         public Manufacturer()
         {
             ManufacturerID = Guid.NewGuid();
-            models = new List<BikeModel>();
+            _Models = new List<BikeModel>();
         }
 
         [Key]
@@ -25,11 +25,11 @@ namespace BikeFit2.Models
         {
             get
             {
-                return models;
+                return _Models;
             }
             set
             {
-                models = value;
+                _Models = value;
             }
         }
     }

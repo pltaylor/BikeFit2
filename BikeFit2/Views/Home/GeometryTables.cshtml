@@ -1,0 +1,29 @@
+﻿@model List<BikeFit2.Models.Manufacturer>
+
+@foreach (var manufacturer in Model)
+{
+    <h2>@manufacturer.Name</h2>
+
+    foreach (var bikeModel in manufacturer.Models)
+    {
+        <h3>@bikeModel.Name</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th> <!-- space here for the models -->
+                    <th>Size</th>
+                    <th>Stack</th>
+                    <th>Reach</th>
+                    <th>Trail</th>
+                    <th>Front Center</th>
+                    <th>Head Tube</th>
+                    <th>Head Set</th>
+                    <th>Seat Angle (Min)</th>
+                    <th>Seat Angle (Max)</th>
+                    <th>650?</th>
+                </tr>
+            </thead>
+        </table>
+    }
+
+}

@@ -414,6 +414,7 @@
     <Content Include="Views\MeasurementAdmin\Index.cshtml" />
     <Content Include="Scripts\toastr.min.js.map" />
     <Content Include="Views\Shared\_SlowtwitchLayout.cshtml" />
+    <Content Include="Views\Home\GeometryTables.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

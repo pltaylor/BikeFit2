@@ -1,9 +1,13 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
+using BikeFit2.DataLayer;
 
 namespace BikeFit2.Controllers
 {
     public class HomeController : Controller
     {
+        readonly BikeFitContext _Context = new BikeFitContext();
+
         public ActionResult Index()
         {
             return View();
@@ -22,6 +26,12 @@ namespace BikeFit2.Controllers
         public ViewResult FrameComparerSlowtwitch()
         {
             return View("Index", "_SlowtwitchLayout");
+        }
+
+        public ViewResult GeometryTables()
+        {
+            var manufacturers = _Context.Manufacturers;
+            return View("GeometryTables", "_SlowtwitchLayout", manufacturers.ToList());
         }
     }
 }

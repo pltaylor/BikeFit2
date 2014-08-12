@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using BikeFit2.DataLayer;
-using BikeFit2.Models;
 
 namespace BikeFit2.Controllers
 {
@@ -32,7 +30,7 @@ namespace BikeFit2.Controllers
 
         public ViewResult GeometryTables()
         {
-            List<Manufacturer> manufacturers = _Context.Manufacturers.Where(x=>x.IsActive).ToList();
+            var manufacturers = _Context.Manufacturers.Where(x=>x.IsActive).ToList();
 
             foreach (var manufacturer in manufacturers)
             {

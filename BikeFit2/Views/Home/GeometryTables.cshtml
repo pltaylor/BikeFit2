@@ -1,4 +1,5 @@
-﻿@model List<BikeFit2.Models.Manufacturer>
+﻿@using BikeFit2.Models
+@model List<BikeFit2.Models.Manufacturer>
 
 @foreach (var manufacturer in Model)
 {
@@ -22,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach(var size in bikeModel.Sizes)
+                @foreach (var size in bikeModel.Sizes)
                 {
                     <tr>
                         <td>@size.Size</td>
@@ -33,9 +34,18 @@
                         <td>@size.HeadTubeLength</td>
                         <td>@size.MinSeatAngle</td>
                         <td>@size.MaxSeatAngle</td>
-                        <td>@size.WheelSize</td>
+                        <td>
+                            @if (size.WheelSize == WheelSize.SevenHundred)
+                            {
+                                <text>700</text>
+                            }
+                            else
+                            {
+                                <text>650</text>
+                            }
+                        </td>
                     </tr>
-                } 
+                }
             </tbody>
         </table>
     }

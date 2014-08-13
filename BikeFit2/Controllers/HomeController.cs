@@ -34,5 +34,12 @@ namespace BikeFit2.Controllers
 
             return View("GeometryTables", "_SlowtwitchLayout", vm);
         }
+
+        public PartialViewResult GeometrySubTable(string manufacturer, string type)
+        {
+            var vm = new GeometryTableViewModel(_Context, manufacturer, type);
+
+            return PartialView("GeometryTableSubView", vm.Manufacturers);
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿@using BikeFit2.Models
-@model BikeFit2.Models.ViewModels.GeometryTableViewModel
+﻿@model BikeFit2.Models.ViewModels.GeometryTableViewModel
 
 <div class="form-group">
     @Html.LabelFor(model => model.Manufacturer, new { @class = "control-label col-md-2" })
@@ -12,53 +11,4 @@
     </div>
 </div>
 
-@foreach (var manufacturer in Model.Manufacturers)
-{
-    <h2 class ="page-header">@manufacturer.Name</h2>
-
-    foreach (var bikeModel in manufacturer.Models)
-    {
-        <h3>@bikeModel.Name</h3>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Size</th>
-                    <th>Stack</th>
-                    <th>Reach</th>
-                    <th>Front Center</th>
-                    <th>Head Tube Angle</th>
-                    <th>Head Tube Length</th>
-                    <th>Seat Angle (Min)</th>
-                    <th>Seat Angle (Max)</th>
-                    <th>Wheel Size</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var size in bikeModel.Sizes)
-                {
-                    <tr>
-                        <td>@size.Size</td>
-                        <td>@size.Stack</td>
-                        <td>@size.Reach</td>
-                        <td>@size.FrontCenter</td>
-                        <td>@size.HeadTubeAngle°</td>
-                        <td>@size.HeadTubeLength</td>
-                        <td>@size.MinSeatAngle°</td>
-                        <td>@size.MaxSeatAngle°</td>
-                        <td>
-                            @if (size.WheelSize == WheelSize.SevenHundred)
-                            {
-                                <text>700</text>
-                            }
-                            else
-                            {
-                                <text>650</text>
-                            }
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    }
-
-}
+@Html.Partial("GeometryTableSubView", Model.Manufacturers)

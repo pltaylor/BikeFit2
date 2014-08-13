@@ -8,25 +8,41 @@ namespace BikeFit2.Models.ViewModels
 {
     public class GeometryTableViewModel
     {
-        public GeometryTableViewModel(BikeFitContext context)
+        public GeometryTableViewModel(BikeFitContext context, string manufacturerName = "All", string typeName = "All")
         {
-            ManufacturerList = new List<SelectListItem> {new SelectListItem {Text = "All", Value = "All"}};
+            ManufacturerList = new List<SelectListItem> { new SelectListItem { Text = "All", Value = "All" } };
             Manufacturer = "All";
 
-            Manufacturers = context.Manufacturers.Where(x => x.IsActive).ToList();
+            if (manufacturerName == "All")
+            {
+                Manufacturers = context.Manufacturers.Where(x => x.IsActive).ToList();
+            }
+            else
+            {
+                Manufacturers = context.Manufacturers.Where(x => x.IsActive).Where(m => m.Name == manufacturerName).ToList();
+            }
 
             foreach (var manufacturer in Manufacturers)
             {
-                ManufacturerList.Add(new SelectListItem {Text = manufacturer.Name, Value = manufacturer.ManufacturerID.ToString()});
+                ManufacturerList.Add(new SelectListItem { Text = manufacturer.Name, Value = manufacturer.ManufacturerID.ToString() });
 
-                manufacturer.Models = manufacturer.Models.OrderBy(m => m.Name).ToList();
+                if (typeName == "All")
+                {
+                    manufacturer.Models = manufacturer.Models.OrderBy(m => m.Name).ToList();
+                }
+                else
+                {
+                    manufacturer.Models = manufacturer.Models.Where(m=>m.BikeType.ToString() == typeName).OrderBy(m => m.Name).ToList();
+                }
+
+
                 foreach (var model in manufacturer.Models)
                 {
                     model.Sizes = model.Sizes.Where(m => m.Approved).OrderBy(m => m.SortOrder).ThenBy(m => m.Size).ToList();
                 }
             }
 
-            BikeTypesList = new List<SelectListItem> {new SelectListItem {Text = "All", Value = "All"}};
+            BikeTypesList = new List<SelectListItem> { new SelectListItem { Text = "All", Value = "All" } };
             BikeType = "All";
 
             var bikeTypes = context.BikeTypes;

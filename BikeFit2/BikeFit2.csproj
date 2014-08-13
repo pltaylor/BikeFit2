@@ -436,6 +436,7 @@
     <Content Include="Scripts\toastr.min.js.map" />
     <Content Include="Views\Shared\_SlowtwitchLayout.cshtml" />
     <Content Include="Views\Home\GeometryTables.cshtml" />
+    <Content Include="Views\Home\GeometryTableSubView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

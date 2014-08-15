@@ -16,10 +16,19 @@
 @section scripts
 {
     <script>
-        $('#Manufacturer').change(getTable());
-        $('#BIkeType').change(getTable());
-
-        function getTable() {
+    $('#Manufacturer').change(function () {
+        var manufacturer = $('#Manufacturer option:selected').text();
+        var type = $('#BikeType option:selected').text();
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("GeometrySubTable", "Home")',
+                data: { manufacturer: manufacturer, type: type },
+                success: function (response) {
+                    $('#GeometryTable').html(response);
+                }
+            });
+        });
+        $('#BIkeType').change(function () {
             var manufacturer = $('#Manufacturer option:selected').text();
             var type = $('#BikeType option:selected').text();
             $.ajax({
@@ -30,6 +39,6 @@
                     $('#GeometryTable').html(response);
                 }
             });
-        };
+        });
     </script>
 }

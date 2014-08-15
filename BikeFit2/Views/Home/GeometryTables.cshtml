@@ -3,11 +3,11 @@
 <div class="form-group">
     @Html.LabelFor(model => model.Manufacturer, new { @class = "control-label col-md-2" })
     <div class="col-md-4">
-        @Html.DropDownListFor(model => model.Manufacturer, Model.ManufacturerList)
+        @Html.DropDownListFor(model => model.Manufacturer, Model.ManufacturerList, new { @class = "form-control" })
     </div>
     @Html.LabelFor(model => model.BikeType, new { @class = "control-label col-md-2" })
     <div class="col-md-4">
-        @Html.DropDownListFor(model => model.BikeType, Model.BikeTypesList)
+        @Html.DropDownListFor(model => model.BikeType, Model.BikeTypesList, new { @class = "form-control" }))
     </div>
 </div>
 

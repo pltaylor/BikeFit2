@@ -16,26 +16,20 @@
 @section scripts
 {
     <script>
-        $(document).ready(function () {
-            var dropDowns = {};
-            dropDowns.a = "Manufacturer";
-            dropDowns.b = "BikeType";
+        $('#Manufacturer').change(getTable());
+        $('#BIkeType').change(getTable());
 
+        var getTable = function () {
             var manufacturer = $('#Manufacturer option:selected').text();
             var type = $('#BikeType option:selected').text();
-
-            for (var x in dropDowns) {
-                $('#' + x).change(function () {
-                    $.ajax({
-                        type: "POST",
-                        url: '@Url.Action("GeometrySubTable", "Home")',
-                        data: { manufacturer: manufacturer, type: type },
-                        success: function (response) {
-                            $('#GeometryTable').html(response);
-                        }
-                    });
-                });
-            }
-        });
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GeometrySubTable", "Home")',
+                data: { manufacturer: manufacturer, type: type },
+                success: function (response) {
+                    $('#GeometryTable').html(response);
+                }
+            });
+        };
     </script>
 }

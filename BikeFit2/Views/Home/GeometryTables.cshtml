@@ -16,7 +16,7 @@
 @section scripts
 {
     <script>
-        $('Manufacturer').change(function () {
+        $('#Manufacturer').change(function () {
             var manufacturer = $('#Manufacturer option:selected').text();
             var type = $('#BikeType option:selected').text();
             $.ajax({

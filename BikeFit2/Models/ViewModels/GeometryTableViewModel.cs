@@ -32,7 +32,7 @@ namespace BikeFit2.Models.ViewModels
                 }
                 else
                 {
-                    manufacturer.Models = manufacturer.Models.Where(m=>m.BikeType.ToString() == typeName).OrderBy(m => m.Name).ToList();
+                    manufacturer.Models = manufacturer.Models.Where(m=>m.BikeType.Type == typeName).OrderBy(m => m.Name).ToList();
                 }
 
 

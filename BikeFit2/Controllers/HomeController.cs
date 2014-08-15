@@ -30,16 +30,22 @@ namespace BikeFit2.Controllers
 
         public ViewResult GeometryTables()
         {
-            var vm = new GeometryTableViewModel(_Context);
+            using (_Context)
+            {
+                var vm = new GeometryTableViewModel(_Context);
 
-            return View("GeometryTables", "_SlowtwitchLayout", vm);
+                return View("GeometryTables", "_SlowtwitchLayout", vm);
+            }
         }
 
         public PartialViewResult GeometrySubTable(string manufacturer, string type)
         {
-            var vm = new GeometryTableViewModel(_Context, manufacturer, type);
+            using (_Context)
+            {
+                var vm = new GeometryTableViewModel(_Context, manufacturer, type);
 
-            return PartialView("GeometryTableSubView", vm.Manufacturers);
+                return PartialView("GeometryTableSubView", vm.Manufacturers);
+            }
         }
     }
 }

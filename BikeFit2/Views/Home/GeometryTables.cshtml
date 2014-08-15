@@ -12,3 +12,21 @@
 </div>
 
 @Html.Partial("GeometryTableSubView", Model.Manufacturers)
+
+@section scripts
+{
+    <script>
+        $('Manufacturer').change(function () {
+            var manufacturer = $('#Manufacturer option:selected').text();
+            var type = $('#BikeType option:selected').text();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GeometrySubTable", "Home")',
+                data: { manufacturer: manufacturer, type: type },
+                success: function (response) {
+                    $('GeometryTable').html(response);
+                }
+            });
+        });
+    </script>
+}

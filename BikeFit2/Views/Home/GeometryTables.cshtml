@@ -24,7 +24,7 @@
                 url: '@Url.Action("GeometrySubTable", "Home")',
                 data: { manufacturer: manufacturer, type: type },
                 success: function (response) {
-                    $('GeometryTable').html(response);
+                    $('#GeometryTable').html(response);
                 }
             });
         });

@@ -19,7 +19,7 @@
         $('#Manufacturer').change(getTable());
         $('#BIkeType').change(getTable());
 
-        var getTable = function () {
+        function getTable() {
             var manufacturer = $('#Manufacturer option:selected').text();
             var type = $('#BikeType option:selected').text();
             $.ajax({

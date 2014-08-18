@@ -10,45 +10,59 @@ namespace BikeFit2.Models.ViewModels
     {
         public GeometryTableViewModel(BikeFitContext context, string manufacturerName = "All", string typeName = "All")
         {
-            ManufacturerList = new List<SelectListItem> { new SelectListItem { Text = "All", Value = "All" } };
-            Manufacturer = "All";
-
-            if (manufacturerName == "All")
+            using(context)
             {
-                Manufacturers = context.Manufacturers.Where(x => x.IsActive).ToList();
-            }
-            else
-            {
-                Manufacturers = context.Manufacturers.Where(x => x.IsActive).Where(m => m.Name == manufacturerName).ToList();
-            }
+                ManufacturerList = new List<SelectListItem> {new SelectListItem {Text = "All", Value = "All"}};
+                Manufacturer = "All";
 
-            foreach (var manufacturer in Manufacturers)
-            {
-                ManufacturerList.Add(new SelectListItem { Text = manufacturer.Name, Value = manufacturer.ManufacturerID.ToString() });
-
-                if (typeName == "All")
+                if (manufacturerName == "All")
                 {
-                    manufacturer.Models = manufacturer.Models.OrderBy(m => m.Name).ToList();
+                    Manufacturers = context.Manufacturers.Where(x => x.IsActive).ToList();
                 }
                 else
                 {
-                    manufacturer.Models = manufacturer.Models.Where(m=>m.BikeType.Type == typeName).OrderBy(m => m.Name).ToList();
+                    Manufacturers =
+                        context.Manufacturers.Where(x => x.IsActive).Where(m => m.Name == manufacturerName).ToList();
                 }
 
-
-                foreach (var model in manufacturer.Models)
+                foreach (var manufacturer in Manufacturers)
                 {
-                    model.Sizes = model.Sizes.Where(m => m.Approved).OrderBy(m => m.SortOrder).ThenBy(m => m.Size).ToList();
+                    ManufacturerList.Add(new SelectListItem
+                    {
+                        Text = manufacturer.Name,
+                        Value = manufacturer.ManufacturerID.ToString()
+                    });
+
+                    if (typeName == "All")
+                    {
+                        manufacturer.Models = manufacturer.Models.OrderBy(m => m.Name).ToList();
+                    }
+                    else
+                    {
+                        manufacturer.Models =
+                            manufacturer.Models.Where(m => m.BikeType.Type == typeName).OrderBy(m => m.Name).ToList();
+                    }
+
+
+                    foreach (var model in manufacturer.Models)
+                    {
+                        model.Sizes =
+                            model.Sizes.Where(m => m.Approved).OrderBy(m => m.SortOrder).ThenBy(m => m.Size).ToList();
+                    }
                 }
-            }
 
-            BikeTypesList = new List<SelectListItem> { new SelectListItem { Text = "All", Value = "All" } };
-            BikeType = "All";
+                BikeTypesList = new List<SelectListItem> {new SelectListItem {Text = "All", Value = "All"}};
+                BikeType = "All";
 
-            var bikeTypes = context.BikeTypes;
-            foreach (var type in bikeTypes)
-            {
-                BikeTypesList.Add(new SelectListItem { Text = type.Type, Value = type.BikeTypeId.ToString(CultureInfo.InvariantCulture) });
+                var bikeTypes = context.BikeTypes;
+                foreach (var type in bikeTypes)
+                {
+                    BikeTypesList.Add(new SelectListItem
+                    {
+                        Text = type.Type,
+                        Value = type.BikeTypeId.ToString(CultureInfo.InvariantCulture)
+                    });
+                }
             }
         }
 

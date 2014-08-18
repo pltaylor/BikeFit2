@@ -31,6 +31,11 @@ namespace BikeFit2.Controllers
             return View("Index", "_SlowtwitchLayout");
         }
 
+        public ActionResult FullTriBikeSlowtwitch()
+        {
+            return View("FullTriBIke", "_SlowtwitchLayout");
+        }
+
         public ViewResult GeometryTables()
         {
             using (_Context)

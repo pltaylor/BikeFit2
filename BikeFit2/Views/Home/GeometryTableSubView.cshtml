@@ -1,13 +1,13 @@
 ﻿@using BikeFit2.Models
 @model List<Manufacturer>
-<div id="GeometryTable">
+
     @foreach (var manufacturer in Model)
     {
-        <h2 class="page-header">@manufacturer.Name</h2>
+        <h3 class="page-header">@manufacturer.Name</h3>
 
         foreach (var bikeModel in manufacturer.Models)
         {
-            <h3>@bikeModel.Name</h3>
+            <h4>@bikeModel.Name</h4>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -51,4 +51,3 @@
         }
 
     }
-</div>

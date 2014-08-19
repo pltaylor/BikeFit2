@@ -1,27 +1,33 @@
 ﻿@model BikeFit2.Models.ViewModels.GeometryTableViewModel
-
-<div class="form-group">
-    @Html.LabelFor(model => model.Manufacturer, new { @class = "control-label col-md-2" })
-    <div class="col-md-4">
-        @Html.DropDownListFor(model => model.Manufacturer, Model.ManufacturerList, new { @class = "form-control" })
+<form role="form" class="form-horizontal">
+    <div class="row">
+        <div class="form-group col-xs-6">
+            @Html.LabelFor(model => model.Manufacturer, new { @class = "control-label col-md-2 col-xs-5" })
+            <div class="col-md-4 col-xs-7">
+                @Html.DropDownListFor(model => model.Manufacturer, Model.ManufacturerList, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group col-xs-6">
+            @Html.LabelFor(model => model.BikeType, new { @class = "control-label col-md-2 col-xs-5" })
+            <div class="col-md-4 col-xs-7">
+                @Html.DropDownListFor(model => model.BikeType, Model.BikeTypesList, new { @class = "form-control" })
+            </div>
+        </div>
     </div>
-    @Html.LabelFor(model => model.BikeType, new { @class = "control-label col-md-2" })
-    <div class="col-md-4">
-        @Html.DropDownListFor(model => model.BikeType, Model.BikeTypesList, new { @class = "form-control" })
+    <div id="GeometryTable" class="row">
+        @Html.Partial("GeometryTableSubView", Model.Manufacturers)
     </div>
-</div>
-
-@Html.Partial("GeometryTableSubView", Model.Manufacturers)
+</form>
 
 @section scripts
 {
     <script>
-    $('#Manufacturer').change(function () {
-        var manufacturer = $('#Manufacturer option:selected').text();
-        var type = $('#BikeType option:selected').text();
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("GeometrySubTable", "Home")',
+        $('#Manufacturer').change(function () {
+            var manufacturer = $('#Manufacturer option:selected').text();
+            var type = $('#BikeType option:selected').text();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("GeometrySubTable", "Home")',
                 data: { manufacturer: manufacturer, type: type },
                 success: function (response) {
                     $('#GeometryTable').html(response);

@@ -8,109 +8,105 @@
 </div>
 <div class="row">
     <div class="col-md-12" data-bind="with: frame">
-        <div class="row form-horizontal well well-sm">
-            <h3>Frame:</h3>
-            <div class="col-md-12 form-group">
-                <label class="col-md-1 control-label" for="manufacturer">Brand:</label>
-                <div class="col-md-3">
-                    <select class="form-control" id="manufacturer" data-bind="options: $parent.manufacturers, optionsText: 'name', value: manufacturer"></select>
-                </div>
-                <label class="col-md-1 control-label" for="model">Model:</label>
-                <div class="col-md-3">
-                    <select class="form-control" id="model" data-bind="options: models, optionsText: 'name', value: model"></select>
-                </div>
-                <label class="col-md-1 control-label" for="size">Size:</label>
-                <div class="col-md-3">
-                    <select class="form-control" id="size" data-bind="options: sizes, optionsText: 'size', value: size"></select>
-                </div>
-            </div>
-        </div>
-        <div data-bind="with: size">
-            <div class="row">
-                <div class="form-horizontal well well-sm col-md-6">
-                    <h3 class="text-center">Headset Information</h3>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="capHeight">Cap Height:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" id="capHeight" data-bind="value: headSetTopCap" />
-                        </div>
+        <form class="form-horizontal" role="form">
+            <div class="well well-sm col-xs-12">
+                <h3>Frame:</h3>
+                <div class="col-md-12 form-group">
+                    <label class="col-md-1 control-label col-xs-4" for="manufacturer">Brand:</label>
+                    <div class="col-md-3 col-xs-8">
+                        <select class="form-control" id="manufacturer" data-bind="options: $parent.manufacturers, optionsText: 'name', value: manufacturer"></select>
                     </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Steerer Spacers:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: steeringSpacers" />
-                        </div>
+                    <label class="col-md-1 control-label col-xs-4" for="model">Model:</label>
+                    <div class="col-md-3 col-xs-8">
+                        <select class="form-control" id="model" data-bind="options: models, optionsText: 'name', value: model"></select>
                     </div>
-                </div>
-                <div class="form-horizontal well well-sm col-md-6">
-                    <h3 class="text-center">Seat Information</h3>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">BB-Seat Distance:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: bbToSeatDistance" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Seat Tube Angle:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: seatTubeAngle" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Seat Length:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: seatLength" />
-                        </div>
+                    <label class="col-md-1 control-label col-xs-4" for="size">Size:</label>
+                    <div class="col-md-3 col-xs-8">
+                        <select class="form-control" id="size" data-bind="options: sizes, optionsText: 'size', value: size"></select>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="form-horizontal well well-sm col-md-6">
-                    <h3 class="text-center">Stem Information</h3>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Length:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: stemLength" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Angle:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: stemAngle" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Steerer Clamp Ht.:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: stemThickness" />
-                        </div>
+            <div data-bind="with: size" class="well well-sm col-md-6 col-xs-6">
+                <h3 class="text-center">Headset Information</h3>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6" for="capHeight">Cap Height:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" id="capHeight" data-bind="value: headSetTopCap" />
                     </div>
                 </div>
-                <div class="form-horizontal well well-sm col-md-6">
-                    <h3 class="text-center">Aero Bar Information</h3>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Aero Bar Spacers:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: aeroBarSpacers" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Arm Pad Spacers:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: armPadSpacers" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-md-4 control-label">Arm Pad Offset:</label>
-                        <div class="col-md-8">
-                            <input class="form-control" data-bind="value: armPadOffset" />
-                        </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Steerer Spacers:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: steeringSpacers" />
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div data-bind="with: size" class="well well-sm col-md-6 col-xs-6">
+                <h3 class="text-center">Seat Information</h3>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">BB-Seat Distance:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: bbToSeatDistance" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Seat Tube Angle:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: seatTubeAngle" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Seat Length:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: seatLength" />
+                    </div>
+                </div>
+            </div>
+            <div data-bind="with: size" class="well well-sm col-md-6 col-xs-6">
+                <h3 class="text-center">Stem Information</h3>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Length:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: stemLength" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Angle:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: stemAngle" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Steer Clamp Ht.:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: stemThickness" />
+                    </div>
+                </div>
+            </div>
+            <div data-bind="with: size" class="well well-sm col-md-6 col-xs-6">
+                <h3 class="text-center">Aero Bar Information</h3>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Aero Bar Spacers:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: aeroBarSpacers" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Arm Pad Spacers:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: armPadSpacers" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label col-xs-6">Arm Pad Offset:</label>
+                    <div class="col-md-8 col-xs-6">
+                        <input class="form-control" data-bind="value: armPadOffset" />
+                    </div>
+                </div>
+            </div>
+            <div data-bind="with: size" class="row col-xs-12">
                 <h3 class="text-center">Calculated Geometry</h3>
-                <dl class="dl-horizontal">
+                <dl class="dl-horizontal col-xs-6 col-xs-offset-3">
                     <dt>Frame Stack:</dt>
                     <dd data-bind="text: stackFormatted"></dd>
                     <dt>Frame Reach:</dt>
@@ -121,8 +117,7 @@
                     <dd data-bind="text: padReach"></dd>
                 </dl>
             </div>
-        </div>
-
+        </form>
     </div>
 </div>
 @section scripts

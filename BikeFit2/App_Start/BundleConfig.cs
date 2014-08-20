@@ -24,7 +24,7 @@ namespace BikeFit2
 
             bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
                 "~/scripts/toastr.js",
-                "~/scripts/knockout-3.1.0.debug.js",
+                "~/scripts/knockout-3.2.0.debug.js",
                 "~/scripts/q.js",
                 "~/scripts/breeze.debug.js",
                 "~/scripts/moment.js"));

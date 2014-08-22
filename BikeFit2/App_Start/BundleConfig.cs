@@ -17,11 +17,11 @@ namespace BikeFit2
             
             bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
                       "~/Scripts/respond.js",
-                    "~/scripts/toastr.js",
                     "~/scripts/knockout-3.2.0.debug.js",
-                    "~/scripts/q.js",
-                    "~/scripts/breeze.debug.js",
-                    "~/scripts/moment.js"));
+                    "~/scripts/breeze.debug.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/frames.js").Include(
+                "~/scripts/frames.js"));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Content/site.css",
@@ -32,9 +32,6 @@ namespace BikeFit2
                       "~/Content/frame.css",
                        "~/Content/slowtwitch.css",
                       "~/Content/toastr.css"));
-
-            bundles.Add(new ScriptBundle("~/bundles/frames.js").Include(
-                "~/scripts/frames.js"));
         }
     }
 }

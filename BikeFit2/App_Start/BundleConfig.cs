@@ -7,9 +7,6 @@ namespace BikeFit2
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -17,31 +14,24 @@ namespace BikeFit2
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
-
+            
             bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
-                "~/scripts/toastr.js",
-                "~/scripts/knockout-3.2.0.debug.js",
-                "~/scripts/q.js",
-                "~/scripts/breeze.debug.js",
-                "~/scripts/moment.js"));
+                      "~/Scripts/respond.js",
+                    "~/scripts/toastr.js",
+                    "~/scripts/knockout-3.2.0.debug.js",
+                    "~/scripts/q.js",
+                    "~/scripts/breeze.debug.js",
+                    "~/scripts/moment.js"));
 
             bundles.Add(new StyleBundle("~/bundles/css").Include(
-                      "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/frame.css",
-                      "~/Content/toastr.css",
-                      "~/Content/css/font-awesome.css"));
+                      "~/Content/toastr.css"));
 
             bundles.Add(new StyleBundle("~/bundles/frameCss").Include(
-                      "~/Content/bootstrap.css",
                       "~/Content/frame.css",
                        "~/Content/slowtwitch.css",
-                      "~/Content/toastr.css",
-                      "~/Content/css/font-awesome.css"));
+                      "~/Content/toastr.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/frames.js").Include(
                 "~/scripts/frames.js"));

@@ -1,5 +1,3 @@
-using BikeFit2.DataLayer;
-
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(BikeFit2.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(BikeFit2.App_Start.NinjectWebCommon), "Stop")]
 
@@ -63,7 +61,6 @@ namespace BikeFit2.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IBikeFitContext>().To<BikeFitContext>();
         }        
     }
 }

@@ -283,12 +283,15 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Aerobar\AerobarHeight.cs" />
     <Compile Include="Models\Aerobar\AerobarModel.cs" />
     <Compile Include="Models\Aerobar\AerobarManufacturer.cs" />
     <Compile Include="Models\Aerobar\AeroBarType.cs" />
     <Compile Include="Models\Aerobar\BaseBarWidth.cs" />
     <Compile Include="Models\Aerobar\PadHeight.cs" />
+    <Compile Include="Models\Aerobar\PadReach.cs" />
     <Compile Include="Models\Aerobar\PadWidth.cs" />
+    <Compile Include="Models\Aerobar\Stem.cs" />
     <Compile Include="Models\BikeModel.cs" />
     <Compile Include="Models\BikeSize.cs" />
     <Compile Include="Models\BikeType.cs" />

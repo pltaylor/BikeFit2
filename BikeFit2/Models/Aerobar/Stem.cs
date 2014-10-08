@@ -4,16 +4,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BikeFit2.Models.Aerobar
 {
-    public class PadWidth
+    public class Stem
     {
-        public PadWidth()
+        public Stem()
         {
-            PadWidthID = new Guid();
+            StemID = new Guid();
         }
-        [Key]
-        public Guid PadWidthID { get; set; }
 
-        public double Width { get; set; }
+        [Key]
+        public Guid StemID { get; set; }
+
+        public double Length { get; set; }
+
+        public double Angle { get; set; }
 
         [ForeignKey("AerobarModel")]
         public Guid AerobarID { get; set; }

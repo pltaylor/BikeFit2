@@ -36,22 +36,19 @@ namespace BikeFit2.Models.Aerobar
 
         public virtual PadHeight PadHeight { get; set; }
 
+        [ForeignKey("PadReach")]
+        public Guid PadReachtID { get; set; }
+
+        public virtual PadReach PadReach { get; set; }
+
         [ForeignKey("AerobarHeight")]
         public Guid AerobarHeightID { get; set; }
 
         public virtual AerobarHeight AerobarHeight { get; set; }
-    }
 
-    public class AerobarHeight
-    {
-        public AerobarHeight()
-        {
-            AerobarHeightID = new Guid();
-        }
+        [ForeignKey("Stem")]
+        public Guid StemID { get; set; }
 
-        [Key]
-        public Guid AerobarHeightID { get; set; }
-
-        public double Height { get; set; }
+        public virtual Stem Stem { get; set; }
     }
 }

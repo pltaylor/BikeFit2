@@ -10,6 +10,7 @@ namespace BikeFit2.Models.Aerobar
         {
             PadWidthID = new Guid();
         }
+
         [Key]
         public Guid PadWidthID { get; set; }
 

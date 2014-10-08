@@ -37,7 +37,7 @@ namespace BikeFit2.Models.Aerobar
         public virtual PadHeight PadHeight { get; set; }
 
         [ForeignKey("PadReach")]
-        public Guid PadReachtID { get; set; }
+        public Guid PadReachID { get; set; }
 
         public virtual PadReach PadReach { get; set; }
 

@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using BikeFit2.Models;
+using BikeFit2.Models.Aerobar;
 
 namespace BikeFit2.DataLayer
 {
@@ -9,5 +10,7 @@ namespace BikeFit2.DataLayer
         DbSet<BikeModel> BikeModels { get; set; }
         DbSet<BikeSize> BikeSizes { get; set; }
         DbSet<BikeType> BikeTypes { get; set; }
+        DbSet<AerobarManufacturer> AeroBarManufacturers { get; set; }
+        DbSet<AerobarModel> AerobarModels { get; set; }
     }
 }

@@ -30,6 +30,16 @@
             return result;
         };
 
+        var createNewAerobarModel = function (manufacturerId) {
+            var result = manager.createEntity(entityNames.aeroBar,
+            {
+                AerobarID: breeze.core.getUuid(),
+                AerobarManufacturerID: manufacturerId
+            });
+
+            return result;
+        };
+
         var getAllManufacturers = function (manufacturerObservable) {
             var query = entityQuery.from('Manufacturers')
                 .orderBy('name');
@@ -60,6 +70,21 @@
                     manufacturerObservable(data.results);
                 }
                 log('Retrieved [Manufacturer] from remote data source', data, false);
+            }
+        };
+
+        var getAllAerobarManufacturers = function (manufacturerObservable) {
+            var query = entityQuery.from('AerobarManufacturers').orderBy('name');
+
+            return manager.executeQuery(query)
+                .then(querySucceeded)
+                .fail(queryFailed);
+
+            function querySucceeded(data) {
+                if (manufacturerObservable) {
+                    manufacturerObservable(data.results);
+                }
+                log('Retrieved [Aerobar Manufacturer] from remote data source', data, false);
             }
         };
 
@@ -104,6 +129,35 @@
                     bikeModelsObservable(data.results);
                 }
                 log('Retrieved [Bike Models] from remote data source',
+                    data, false);
+            }
+        };
+
+        var getAerobarModels = function (aerobarModelsObservable, manufacturerId) {
+            if (manufacturerId == "00000000-0000-0000-0000-000000000000") {
+                aerobarModelsObservable('');
+                return true;
+            }
+            var p1 = new Predicate.create('manufactuerID', '==', manufacturerId);
+            var query = entityQuery.from('AerobarModels').where(p1).orderBy('name');
+
+            return manager.executeQuery(query)
+                .then(querySucceeded)
+                .fail(queryFailed);
+
+            function querySucceeded(data) {
+                if (aerobarModelsObservable) {
+                    var initialValues = {
+                        bikeModelID: breeze.core.getUuid(),
+                        manufactuerID: manufacturerId,
+                        manufacturedStartDate: new Date(2000, 1, 1),
+                        manufacturedEndDate: new Date(),
+                        name: ' Select a Model'
+                    };
+                    createNullo(entityNames.bikeModel, 'Model', initialValues);
+                    aerobarModelsObservable(data.results);
+                }
+                log('Retrieved [Aerobar Models] from remote data source',
                     data, false);
             }
         };
@@ -245,7 +299,10 @@
 
         var datacontext = {
             createNewModel: createNewModel,
+            createNewAerobarModel: createNewAerobarModel,
             getAllManufacturers: getAllManufacturers,
+            getAllAerobarManufacturers: getAllAerobarManufacturers,
+            getAerobarModels : getAerobarModels,
             getManufacturers: getManufacturers,
             getBikeTypes: getBikeTypes,
             getBikeModels: getBikeModels,

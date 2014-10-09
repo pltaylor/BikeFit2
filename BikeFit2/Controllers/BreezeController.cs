@@ -4,18 +4,18 @@ using System.Linq;
 using System.Web.Http;
 using BikeFit2.DataLayer;
 using BikeFit2.Models;
+using BikeFit2.Models.Aerobar;
 using Breeze.ContextProvider;
-using Breeze.WebApi2;
 using Breeze.ContextProvider.EF6;
+using Breeze.WebApi2;
 using Newtonsoft.Json.Linq;
-using SaveResult = Breeze.ContextProvider.SaveResult;
 
 namespace BikeFit2.Controllers
 {
     [BreezeController]
     public class BreezeController : ApiController
     {
-        readonly EFContextProvider<BikeFitContext> _ContextProvider = new EFContextProvider<BikeFitContext>();
+        private readonly EFContextProvider<BikeFitContext> _ContextProvider = new EFContextProvider<BikeFitContext>();
 
         [HttpGet]
         public string Metadata()
@@ -27,6 +27,18 @@ namespace BikeFit2.Controllers
         public IQueryable<Manufacturer> Manufacturers()
         {
             return _ContextProvider.Context.Manufacturers;
+        }
+
+        [HttpGet]
+        public IQueryable<AerobarManufacturer> AerobarManufacturers()
+        {
+            return _ContextProvider.Context.AeroBarManufacturers;
+        }
+
+        [HttpGet]
+        public IQueryable<AerobarModel> AerobarModels()
+        {
+            return _ContextProvider.Context.AerobarModels;
         }
 
         [HttpGet]
@@ -53,11 +65,13 @@ namespace BikeFit2.Controllers
         {
             try
             {
-                var uniqueBikeSizes = _ContextProvider
+                List<BikeSize> uniqueBikeSizes = _ContextProvider
                     .Context
                     .BikeSizes
-                    .SqlQuery("select * from (select [SizeID], [BikeModelID], [SortOrder], [Size], [WheelSize], [HeadTubeAngle], [BottomBracketDrop], [HeadTubeLength], [FrontCenter], [RearCenter], [Stack], [Reach], [MaxSeatAngle], [MinSeatAngle], [EnteredDate], [Approved], [UserID], row_number() over(partition by CHECKSUM([Size],[BikeModelID]) order by [EnteredDate] desc) as roworder from BikeSizes) temp where roworder = 1").ToList();
-                return uniqueBikeSizes.OrderBy(x=>x.Size).Where(x=>x.Approved).AsQueryable();
+                    .SqlQuery(
+                        "select * from (select [SizeID], [BikeModelID], [SortOrder], [Size], [WheelSize], [HeadTubeAngle], [BottomBracketDrop], [HeadTubeLength], [FrontCenter], [RearCenter], [Stack], [Reach], [MaxSeatAngle], [MinSeatAngle], [EnteredDate], [Approved], [UserID], row_number() over(partition by CHECKSUM([Size],[BikeModelID]) order by [EnteredDate] desc) as roworder from BikeSizes) temp where roworder = 1")
+                    .ToList();
+                return uniqueBikeSizes.OrderBy(x => x.Size).Where(x => x.Approved).AsQueryable();
             }
             catch (Exception e)
             {
@@ -94,11 +108,11 @@ namespace BikeFit2.Controllers
             {
                 if (map.Key.Name == "BikeSize")
                 {
-                    foreach (var entity in map.Value)
+                    foreach (EntityInfo entity in map.Value)
                     {
                         var newBikeSize = new BikeSize();
                         newBikeSize.Approved = false;
-                        var bikeSize = (BikeSize)entity.Entity;
+                        var bikeSize = (BikeSize) entity.Entity;
                         newBikeSize.BikeModelID = bikeSize.BikeModelID;
                         newBikeSize.BottomBracketDrop = bikeSize.BottomBracketDrop;
                         newBikeSize.EnteredDate = DateTime.Now;
@@ -116,7 +130,7 @@ namespace BikeFit2.Controllers
                         newBikeSize.WheelSize = bikeSize.WheelSize;
                         newBikeSize.UserID = User.Identity.Name;
 
-                        var ei = _ContextProvider.CreateEntityInfo(newBikeSize);
+                        EntityInfo ei = _ContextProvider.CreateEntityInfo(newBikeSize);
                         tempAddList.Add(ei);
 
                         tempRemoveList.Add(entity);
@@ -125,10 +139,10 @@ namespace BikeFit2.Controllers
             }
 
             List<EntityInfo> fooInfos;
-            if (!saveMap.TryGetValue(typeof(BikeSize), out fooInfos))
+            if (!saveMap.TryGetValue(typeof (BikeSize), out fooInfos))
             {
                 fooInfos = new List<EntityInfo>();
-                saveMap.Add(typeof(BikeSize), fooInfos);
+                saveMap.Add(typeof (BikeSize), fooInfos);
             }
 
             fooInfos.AddRange(tempAddList);

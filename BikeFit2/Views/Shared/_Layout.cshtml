@@ -33,6 +33,7 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li>@Html.ActionLink("Frame Admin", "Index", "Admin")</li>
+                        <li>@Html.ActionLink("Aerobar Admin", "Index", "AerobarAdmin")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

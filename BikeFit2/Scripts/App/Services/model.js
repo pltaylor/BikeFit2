@@ -4,7 +4,8 @@
             bikeModel: 'BikeModel',
             bikeSize: 'BikeSize',
             manufacturer: 'Manufacturer',
-            bikeType: 'BikeType'
+            bikeType: 'BikeType',
+            aeroBar: 'AerobarModel'
         };
 
         var model = {

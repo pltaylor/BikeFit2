@@ -138,8 +138,8 @@
                 aerobarModelsObservable('');
                 return true;
             }
-            var p1 = new Predicate.create('manufactuerID', '==', manufacturerId);
-            var query = entityQuery.from('AerobarModels').where(p1).orderBy('name');
+            var p1 = new Predicate.create('aerobarManufacturerID', '==', manufacturerId);
+            var query = entityQuery.from('AerobarModels').where(p1).orderBy('modelName');
 
             return manager.executeQuery(query)
                 .then(querySucceeded)

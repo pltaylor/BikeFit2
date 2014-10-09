@@ -26,6 +26,8 @@
                 'BikeSize', null, bikeSizeInitializer);
             metadataStore.registerEntityTypeCtor(
                 'BikeType', null, bikeTypeInitializer);
+            metadataStore.registerEntityTypeCtor(
+                'AerobarModel', null, aerobarModelInitializer);
         }
 
         function createNullos(manager) {
@@ -43,6 +45,9 @@
                 return manager.createEntity(entityName, initialValues, unchanged);
             }
 
+        }
+        function aerobarModelInitializer(aerobar) {
+            //Add computed observables here
         }
 
         function manufacturerInitializer(manufacturer) {

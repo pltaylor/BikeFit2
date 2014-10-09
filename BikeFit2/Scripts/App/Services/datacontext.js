@@ -33,8 +33,8 @@
         var createNewAerobarModel = function (manufacturerId) {
             var result = manager.createEntity(entityNames.aeroBar,
             {
-                AerobarID: breeze.core.getUuid(),
-                AerobarManufacturerID: manufacturerId
+                aerobarID: breeze.core.getUuid(),
+                aerobarManufacturerID: manufacturerId
             });
 
             return result;

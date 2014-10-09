@@ -31,6 +31,8 @@ namespace BikeFit2.Models.Aerobar
         [ForeignKey("AerobarManufacturer")]
         public Guid AerobarManufacturerID { get; set; }
 
+        public string ModelName { get; set; }
+
         public virtual AerobarManufacturer AerobarManufacturer { get; set; }
 
         public virtual ICollection<BaseBarWidth> BaseBarWidths

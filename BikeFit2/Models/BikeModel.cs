@@ -21,8 +21,7 @@ namespace BikeFit2.Models
         public Guid ManufactuerID { get; set; }
 
         public virtual Manufacturer Manufacturer { get; set; }
-
-
+        
         [ForeignKey("BikeType")]
         public int BikeTypeId { get; set; }
 

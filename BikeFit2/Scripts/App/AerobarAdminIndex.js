@@ -38,6 +38,9 @@
             var manufacturer = ko.observable();
             var isSaving = ko.observable(false);
             var models = ko.observableArray();
+            var aerobarTypes = ko.observableArray();
+
+            datacontext.getAerobarTypes(aerobarTypes);
 
             manufacturer.subscribe(function (newValue) {
                 datacontext.getAerobarModels(models, newValue.manufacturerID());
@@ -107,6 +110,7 @@
 
             var vm = {
                 activate: activate,
+                aerobarTypes : aerobarTypes,
                 cancel: cancel,
                 canCreateNewModel: canCreateNewModel,
                 canDeactivate: canDeactivate,

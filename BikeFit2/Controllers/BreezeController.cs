@@ -42,6 +42,12 @@ namespace BikeFit2.Controllers
         }
 
         [HttpGet]
+        public IQueryable<AeroBarType> AerobarTypes()
+        {
+            return _ContextProvider.Context.AeroBarTypes;
+        }
+
+        [HttpGet]
         public IQueryable<BikeType> BikeTypes()
         {
             return _ContextProvider.Context.BikeTypes;

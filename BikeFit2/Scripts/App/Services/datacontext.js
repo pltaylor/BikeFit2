@@ -103,6 +103,21 @@
             }
         };
 
+        var getAerobarTypes = function (aerobarTypeObservable) {
+            var query = entityQuery.from('AerobarTypes');
+
+            return manager.executeQuery(query)
+                .then(querySucceeded)
+                .fail(queryFailed);
+
+            function querySucceeded(data) {
+                if (aerobarTypeObservable) {
+                    aerobarTypeObservable(data.results);
+                }
+                log('Retrieved [AerobarTypes] from remote data source', data, false);
+            }
+        };
+
         var getBikeModels = function (bikeModelsObservable, manufacturerId, bikeType) {
             if (manufacturerId == "00000000-0000-0000-0000-000000000000") {
                 bikeModelsObservable('');
@@ -302,7 +317,8 @@
             createNewAerobarModel: createNewAerobarModel,
             getAllManufacturers: getAllManufacturers,
             getAllAerobarManufacturers: getAllAerobarManufacturers,
-            getAerobarModels : getAerobarModels,
+            getAerobarModels: getAerobarModels,
+            getAerobarTypes: getAerobarTypes,
             getManufacturers: getManufacturers,
             getBikeTypes: getBikeTypes,
             getBikeModels: getBikeModels,

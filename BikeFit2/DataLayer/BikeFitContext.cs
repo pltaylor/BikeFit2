@@ -24,5 +24,17 @@ namespace BikeFit2.DataLayer
         public DbSet<AerobarModel> AerobarModels { get; set; }
 
         public DbSet<AeroBarType> AeroBarTypes { get; set; }
+
+        public DbSet<AerobarHeight> AerobarHeights { get; set; }
+
+        public DbSet<BaseBarWidth> BaseBarWidths { get; set; }
+
+        public DbSet<PadHeight> PadHeights { get; set; }
+
+        public DbSet<PadWidth> PadWidths { get; set; }
+
+        public DbSet<PadReach> PadReaches { get; set; }
+
+        public DbSet<Stem> Stems { get; set; }
     }
 }

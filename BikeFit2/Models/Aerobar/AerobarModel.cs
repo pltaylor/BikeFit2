@@ -35,6 +35,11 @@ namespace BikeFit2.Models.Aerobar
 
         public virtual AerobarManufacturer AerobarManufacturer { get; set; }
 
+        [ForeignKey("AeroBarType")]
+        public int AeroBarTypeId { get; set; }
+
+        public virtual AeroBarType AeroBarType { get; set; }
+
         public virtual ICollection<BaseBarWidth> BaseBarWidths
         {
             get
@@ -46,11 +51,6 @@ namespace BikeFit2.Models.Aerobar
                 _BaseBarWidths = value;
             }
         }
-
-        [ForeignKey("AeroBarType")]
-        public int AeroBarTypeId { get; set; }
-
-        public virtual AeroBarType AeroBarType { get; set; }
 
         public virtual ICollection<PadWidth> PadWidths
         {

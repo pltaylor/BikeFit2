@@ -39,9 +39,9 @@
             var isSaving = ko.observable(false);
             var models = ko.observableArray();
 
-            //manufacturer.subscribe(function (newValue) {
-                //datacontext.getBikeModelsWithSizes(modelsWithSizes, newValue.manufacturerID());});
-        
+            manufacturer.subscribe(function (newValue) {
+                datacontext.getAerobarModels(models, newValue.manufacturerID());
+            });
 
             var createNewModel = function () {
                 var manufacturerId = this.manu().manufacturerID();

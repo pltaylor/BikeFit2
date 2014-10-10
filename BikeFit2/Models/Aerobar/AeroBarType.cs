@@ -1,10 +1,13 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace BikeFit2.Models.Aerobar
 {
-    public enum AeroBarType
+    public class AeroBarType
     {
-        Aerobar,
-        Basebar,
-        AerobarAndBasebar,
-        AerobarAndBasebarAndStem
+        [Key]
+        public int AeroBarTypeId { get; set; }
+
+        [Required]
+        public string Type { get; set; }
     }
 }

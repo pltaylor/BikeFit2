@@ -290,6 +290,10 @@
     <Compile Include="Migrations\201410091315505_Add Aerobar model name.Designer.cs">
       <DependentUpon>201410091315505_Add Aerobar model name.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410101221580_Change Aerobar type to a seperate table.cs" />
+    <Compile Include="Migrations\201410101221580_Change Aerobar type to a seperate table.Designer.cs">
+      <DependentUpon>201410101221580_Change Aerobar type to a seperate table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Aerobar\AerobarHeight.cs" />
@@ -483,6 +487,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410091315505_Add Aerobar model name.resx">
       <DependentUpon>201410091315505_Add Aerobar model name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410101221580_Change Aerobar type to a seperate table.resx">
+      <DependentUpon>201410101221580_Change Aerobar type to a seperate table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

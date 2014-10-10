@@ -12,5 +12,6 @@ namespace BikeFit2.DataLayer
         DbSet<BikeType> BikeTypes { get; set; }
         DbSet<AerobarManufacturer> AeroBarManufacturers { get; set; }
         DbSet<AerobarModel> AerobarModels { get; set; }
+        DbSet<AeroBarType> AeroBarTypes { get; set; }
     }
 }

@@ -40,7 +40,7 @@ namespace BikeFit2.Models.Aerobar
 
         public virtual AeroBarType AeroBarType { get; set; }
 
-        public virtual ICollection<BaseBarWidth> BaseBarWidths
+        public ICollection<BaseBarWidth> BaseBarWidths
         {
             get
             {
@@ -52,7 +52,7 @@ namespace BikeFit2.Models.Aerobar
             }
         }
 
-        public virtual ICollection<PadWidth> PadWidths
+        public ICollection<PadWidth> PadWidths
         {
             get
             {
@@ -64,7 +64,7 @@ namespace BikeFit2.Models.Aerobar
             }
         }
 
-        public virtual ICollection<PadHeight> PadHeights
+        public ICollection<PadHeight> PadHeights
         {
             get
             {
@@ -76,7 +76,7 @@ namespace BikeFit2.Models.Aerobar
             }
         }
 
-        public virtual ICollection<PadReach> PadReaches
+        public ICollection<PadReach> PadReaches
         {
             get
             {
@@ -88,7 +88,7 @@ namespace BikeFit2.Models.Aerobar
             }
         }
 
-        public virtual ICollection<AerobarHeight> AerobarHeights
+        public ICollection<AerobarHeight> AerobarHeights
         {
             get
             {
@@ -100,7 +100,7 @@ namespace BikeFit2.Models.Aerobar
             }
         }
 
-        public virtual ICollection<Stem> Stems
+        public ICollection<Stem> Stems
         {
             get
             {

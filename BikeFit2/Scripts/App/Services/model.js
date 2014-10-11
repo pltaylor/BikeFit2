@@ -5,7 +5,13 @@
             bikeSize: 'BikeSize',
             manufacturer: 'Manufacturer',
             bikeType: 'BikeType',
-            aeroBar: 'AerobarModel'
+            aeroBar: 'AerobarModel',
+            baseBarWidth: 'BaseBarWidth',
+            aerobarHeight: 'AerobarHeight',
+            padHeight: 'PadHeight',
+            padWidth: 'PadWidth',
+            padReach: 'PadReach',
+            stem: 'Stem'
         };
 
         var model = {
@@ -19,15 +25,15 @@
         //#region Internal Methods
         function configureMetadataStore(metadataStore) {
             metadataStore.registerEntityTypeCtor(
-                'Manufacturer', null, manufacturerInitializer);
+                entityNames.manufacturer, null, manufacturerInitializer);
             metadataStore.registerEntityTypeCtor(
-                'BikeModel', null, bikeModelInitializer);
+                entityNames.bikeModel, null, bikeModelInitializer);
             metadataStore.registerEntityTypeCtor(
-                'BikeSize', null, bikeSizeInitializer);
+                entityNames.bikeSize, null, bikeSizeInitializer);
             metadataStore.registerEntityTypeCtor(
-                'BikeType', null, bikeTypeInitializer);
+                entityNames.bikeType, null, bikeTypeInitializer);
             metadataStore.registerEntityTypeCtor(
-                'AerobarModel', null, aerobarModelInitializer);
+                entityNames.aeroBar, null, aerobarModelInitializer);
         }
 
         function createNullos(manager) {
@@ -46,8 +52,9 @@
             }
 
         }
+
         function aerobarModelInitializer(aerobar) {
-            //Add computed observables here
+            
         }
 
         function manufacturerInitializer(manufacturer) {

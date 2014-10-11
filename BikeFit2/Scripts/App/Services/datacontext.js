@@ -162,14 +162,32 @@
 
             function querySucceeded(data) {
                 if (aerobarModelsObservable) {
-                    var initialValues = {
-                        bikeModelID: breeze.core.getUuid(),
-                        manufactuerID: manufacturerId,
-                        manufacturedStartDate: new Date(2000, 1, 1),
-                        manufacturedEndDate: new Date(),
-                        name: ' Select a Model'
-                    };
-                    createNullo(entityNames.bikeModel, 'Model', initialValues);
+                    for (var i = 0; i < data.results.length; i++) {
+
+                        data.results[i].addNewBaseBarWidth = function () {
+                            return manager.createEntity(entityNames.baseBarWidth, { baseBarWidthID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+                        };
+
+                        data.results[i].addNewAerobarHeight = function () {
+                            return manager.createEntity(entityNames.aerobarHeight, { aerobarHeightID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+                        };
+
+                        data.results[i].addNewStem = function () {
+                            return manager.createEntity(entityNames.stem, { stemID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+                        };
+
+                        data.results[i].addNewPadWidth = function () {
+                            return manager.createEntity(entityNames.padWidth, { padWidthID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+                        };
+
+                        data.results[i].addNewPadHeight = function () {
+                            return manager.createEntity(entityNames.padHeight, { padHeightID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+                        };
+
+                        data.results[i].addNewPadReach = function () {
+                            return manager.createEntity(entityNames.padReach, { padReachID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+                        };
+                    }
                     aerobarModelsObservable(data.results);
                 }
                 log('Retrieved [Aerobar Models] from remote data source',

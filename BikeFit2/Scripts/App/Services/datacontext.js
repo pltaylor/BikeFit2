@@ -154,7 +154,7 @@
                 return true;
             }
             var p1 = new Predicate.create('aerobarManufacturerID', '==', manufacturerId);
-            var query = entityQuery.from('AerobarModels').where(p1).orderBy('modelName');
+            var query = entityQuery.from('AerobarModels').where(p1).orderBy('modelName').expand('AerobarHeights, BaseBarWidths, PadHeights, PadReaches, PadWidths, Stems');
 
             return manager.executeQuery(query)
                 .then(querySucceeded)

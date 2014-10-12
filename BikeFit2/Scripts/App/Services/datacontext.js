@@ -88,6 +88,21 @@
             }
         };
 
+        var getAerobarManufacturers = function (manufacturerObservable) {
+            var query = entityQuery.from('AerobarManufacturers').where('isActive', '==', 'true').orderBy('name');
+
+            return manager.executeQuery(query)
+                .then(querySucceeded)
+                .fail(queryFailed);
+
+            function querySucceeded(data) {
+                if (manufacturerObservable) {
+                    manufacturerObservable(data.results);
+                }
+                log('Retrieved [Aerobar Manufacturer] from remote data source', data, false);
+            }
+        };
+
         var getBikeTypes = function (bikeTypeObservable) {
             var query = entityQuery.from('BikeTypes');
 
@@ -330,6 +345,21 @@
 
         };
 
+        var primeDataAerobar = function () {
+            var promise = Q.all([getAerobarManufacturers()])
+                .then(processLookups);
+
+            return promise.then(success);
+
+            function success() {
+                datacontext.lookups = {
+                    manufacturers: function ()
+                    { return getLocal('ArtobarManufacturers', 'name', true); }
+                };
+            }
+
+        };
+
         var datacontext = {
             createNewModel: createNewModel,
             createNewAerobarModel: createNewAerobarModel,
@@ -346,6 +376,7 @@
             getUniqueBikeSizes: getUniqueBikeSizes,
             hasChanges: hasChanges,
             primeData: primeData,
+            primeDataAerobar: primeDataAerobar,
             cancelChanges: cancelChanges,
             saveChanges: saveChanges
         };

@@ -11,7 +11,7 @@
     define(['services/datacontext', 'services/logger'], boot);
 
     function boot(datacontext, logger) {
-        datacontext.primeData()
+        datacontext.primeDataAerobar()
             .then(applyViewModel)
             .fail(failedInitialization);
 
@@ -30,20 +30,20 @@
         function viewModel() {
             var manufacturers = ko.observableArray();
 
-            var bikeTypes = ko.observableArray();
+            var aerobarTypes = ko.observableArray();
 
-            var frame1 = createFrame('Frame 1', 'bike1', 'blue');
-            var frame2 = createFrame('Frame 2', 'bike2', 'green');
-            var frame3 = createFrame('Frame 3', 'bike3', 'gray');
+            var aerobar1 = createAerobar('Aerobar 1', 'aerobar1', 'blue');
+            var aerobar2 = createAerobar('Aerobar 2', 'aerobar2', 'green');
+            var aerobar3 = createAerobar('Aerobar 3', 'aerobar3', 'gray');
 
             var vm = {
                 activate: activate,
-                bikeTypes: bikeTypes,
-                frame1: frame1,
-                frame2: frame2,
-                frame3: frame3,
+                aerobarTypes: aerobarTypes,
+                aerobar1: aerobar1,
+                aerobar2: aerobar2,
+                aerobar3: aerobar3,
                 manufacturers: manufacturers,
-                title: 'Frames'
+                title: 'Aerobars'
             };
 
             return vm;
@@ -51,7 +51,7 @@
             //#region Internal Methods
             function activate() {
                 var manufacturesPromise = datacontext.lookups.manufacturers();
-                logger.log('Frames View Activated', null, false);
+                logger.log('Aerobar View Activated', null, false);
                 $('.preloader').remove();
 
                 return $.when(manufacturesPromise)
@@ -63,7 +63,7 @@
                     });
             }
 
-            function createFrame(name, canvasName, color) {
+            function createAerobar(name, canvasName, color) {
                 var bikeType = ko.observable();
 
                 bikeType.subscribe(function () {

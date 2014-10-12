@@ -28,6 +28,10 @@ namespace BikeFit2
                       "~/Content/frame.css",
                        "~/Content/slowtwitch.css",
                       "~/Content/toastr.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
+                    "~/Scripts/jquery.validate.min.js",
+                    "~/Scripts/jquery.validate.unobtrusive.min.js"));
         }
     }
 }

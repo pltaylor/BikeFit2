@@ -6,6 +6,7 @@
             manufacturer: 'Manufacturer',
             bikeType: 'BikeType',
             aeroBar: 'AerobarModel',
+            aerobarManufacturer: 'AerobarManufacturer',
             baseBarWidth: 'BaseBarWidth',
             aerobarHeight: 'AerobarHeight',
             padHeight: 'PadHeight',
@@ -34,6 +35,8 @@
                 entityNames.bikeType, null, bikeTypeInitializer);
             metadataStore.registerEntityTypeCtor(
                 entityNames.aeroBar, null, aerobarModelInitializer);
+            metadataStore.registerEntityTypeCtor(
+                entityNames.aerobarManufacturer, null, aerobarManufacturerInitializer);
         }
 
         function createNullos(manager) {
@@ -50,6 +53,10 @@
                     || { name: ' Select a ' + abbr };
                 return manager.createEntity(entityName, initialValues, unchanged);
             }
+
+        }
+
+        function aerobarManufacturerInitializer(aerobarManufacturer) {
 
         }
 

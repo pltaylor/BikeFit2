@@ -11,8 +11,7 @@
     define(['services/datacontext', 'services/logger'], boot);
 
     function boot(datacontext, logger) {
-        datacontext.primeDataAerobar()
-            .then(applyViewModel)
+        Q.all([applyViewModel()])
             .fail(failedInitialization);
 
         function failedInitialization(error) {
@@ -50,17 +49,10 @@
 
             //#region Internal Methods
             function activate() {
-                var manufacturesPromise = datacontext.lookups.manufacturers();
                 logger.log('Aerobar View Activated', null, false);
                 $('.preloader').remove();
 
-                return $.when(manufacturesPromise)
-                    .then(function (results) {
-                        manufacturers(results);
-                    })
-                    .then(function () {
-                        datacontext.getBikeTypes(bikeTypes);
-                    });
+                return $.when(datacontext.getAerobarManufacturers(manufacturers));
             }
 
             function createAerobar(name, canvasName, color) {

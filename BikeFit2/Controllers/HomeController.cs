@@ -21,6 +21,11 @@ namespace BikeFit2.Controllers
             return View();
         }
 
+        public PartialViewResult AerobarSelection()
+        {
+            return PartialView();
+        }
+
         public ActionResult FullTriBike()
         {
             return View();

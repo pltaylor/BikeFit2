@@ -369,6 +369,9 @@
     </None>
     <Content Include="newrelic\NewRelic.Profiler.dll" />
     <Content Include="Scripts\App\aerobarAdminIndex.js" />
+    <Content Include="Scripts\App\aerobars.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\App\measurementAdminIndex.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -469,6 +472,8 @@
     <Content Include="Views\Home\GeometryTables.cshtml" />
     <Content Include="Views\Home\GeometryTableSubView.cshtml" />
     <Content Include="Views\AerobarAdmin\Index.cshtml" />
+    <Content Include="Views\Home\Aerobar.cshtml" />
+    <Content Include="Views\Home\AerobarSelection.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

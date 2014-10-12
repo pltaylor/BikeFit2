@@ -37,6 +37,30 @@
                 aerobarManufacturerID: manufacturerId
             });
 
+            result.addNewBaseBarWidth = function () {
+                return manager.createEntity(entityNames.baseBarWidth, { baseBarWidthID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+            };
+
+            result.addNewAerobarHeight = function () {
+                return manager.createEntity(entityNames.aerobarHeight, { aerobarHeightID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+            };
+
+            result.addNewStem = function () {
+                return manager.createEntity(entityNames.stem, { stemID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+            };
+
+            result.addNewPadWidth = function () {
+                return manager.createEntity(entityNames.padWidth, { padWidthID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+            };
+
+            result.addNewPadHeight = function () {
+                return manager.createEntity(entityNames.padHeight, { padHeightID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+            };
+
+            result.addNewPadReach = function () {
+                return manager.createEntity(entityNames.padReach, { padReachID: breeze.core.getUuid(), aerobarID: this.aerobarID() });
+            };
+
             return result;
         };
 

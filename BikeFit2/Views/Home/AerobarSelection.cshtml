@@ -13,16 +13,45 @@
                 <div class="col-xs-8 col-sm-8">
                     <select class="form-control" id="model" data-bind="options: models, optionsText: 'modelName', value: model"></select>
                 </div>
+            </div><div class="form-group">
+                <label class="col-xs-4 col-sm-4 control-label" for="aerobarHeight">Aerobar Height:</label>
+                <div class="col-xs-8 col-sm-8">
+                    <select class="form-control" id="aerobarHeight" data-bind="options: aerobarHeights, optionsText: 'height', value: aerobarHeight"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 col-sm-4 control-label" for="padHeight">Pad Height:</label>
+                <div class="col-xs-8 col-sm-8">
+                    <select class="form-control" id="padHeight" data-bind="options: padHeights, optionsText: 'height', value: padHeight"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 col-sm-4 control-label" for="padWidth">Pad Width:</label>
+                <div class="col-xs-8 col-sm-8">
+                    <select class="form-control" id="padWidth" data-bind="options: padWidths, optionsText: 'width', value: padWidth"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 col-sm-4 control-label" for="padReach">Pad Reach:</label>
+                <div class="col-xs-8 col-sm-8">
+                    <select class="form-control" id="padReach" data-bind="options: padReaches, optionsText: 'reach', value: padReach"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-xs-4 col-sm-4 control-label" for="stem">Stem:</label>
+                <div class="col-xs-8 col-sm-8">
+                    <select class="form-control" id="stem" data-bind="options: stems, optionsText: 'formatedName', value: stem"></select>
+                </div>
             </div>
         </div>
-        @*<div data-bind="with: size" class="col-xs-5 col-sm-12">
+        <div data-bind="with: model" class="col-xs-5 col-sm-12">
             <h3 class="text-center" data-bind="style: { color: $parent.color }">Geometry</h3>
             <dl class="dl-horizontal">
-                <dt>Stack:</dt>
-                <dd data-bind="text: stackFormatted"></dd>
-                <dt>Reach:</dt>
-                <dd data-bind="text: reachFormatted"></dd>
+                @*<dt>Stack:</dt>
+                    <dd data-bind="text: stackFormatted"></dd>
+                    <dt>Reach:</dt>
+                    <dd data-bind="text: reachFormatted"></dd>*@
             </dl>
-        </div>*@
+        </div>
     </form>
 </div>

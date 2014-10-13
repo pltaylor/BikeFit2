@@ -37,6 +37,8 @@
                 entityNames.aeroBar, null, aerobarModelInitializer);
             metadataStore.registerEntityTypeCtor(
                 entityNames.aerobarManufacturer, null, aerobarManufacturerInitializer);
+            metadataStore.registerEntityTypeCtor(
+                entityNames.stem, null, stemInitializer);
         }
 
         function createNullos(manager) {
@@ -54,6 +56,12 @@
                 return manager.createEntity(entityName, initialValues, unchanged);
             }
 
+        }
+
+        function stemInitializer(stem) {
+            stem.formatedName = ko.computed(function() {
+                return stem.length() + "mm x " + stem.angle() + "°";
+            }, stem);
         }
 
         function aerobarManufacturerInitializer(aerobarManufacturer) {

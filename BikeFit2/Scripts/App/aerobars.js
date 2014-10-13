@@ -56,7 +56,7 @@
             }
 
             function createAerobar(name, canvasName, color) {
-                
+
                 var manufacturer = ko.observable();
                 manufacturer.subscribe(function (newValue) {
                     datacontext.getAerobarModels(models, newValue.manufacturerID());
@@ -67,16 +67,63 @@
                 var model = ko.observable();
                 model.subscribe(function (newValue) {
                     if (newValue != null) {
+
+                        aerobarHeights(newValue.aerobarHeights());
+                        aerobarHeights.sort(function (l, r) { return l.height() > r.height() ? 1 : -1; });
+                        aerobarHeight(aerobarHeights()[0]);
+
+                        padHeights(newValue.padHeights());
+                        padHeights.sort(function (l, r) { return l.height() > r.height() ? 1 : -1; });
+                        padHeight(padHeights()[0]);
+
+                        padWidths(newValue.padWidths());
+                        padWidths.sort(function (l, r) { return l.width() > r.width() ? 1 : -1; });
+                        padWidth(padWidths()[0]);
+
+                        padReaches(newValue.padReaches());
+                        padReaches.sort(function (l, r) { return l.reach() > r.reach() ? 1 : -1; });
+                        padReach(padReaches()[0]);
+
+                        stems(newValue.stems());
+                        stems.sort(function (l, r) { return l.length() > r.length() ? 1 : -1; });
+                        stem(stems()[0]);
+
                         drawFrame(newValue);
                     }
                 });
 
+                var aerobarHeights = ko.observableArray();
+                var aerobarHeight = ko.observable();
+
+                var padHeights = ko.observableArray();
+                var padHeight = ko.observable();
+
+                var padWidths = ko.observableArray();
+                var padWidth = ko.observable();
+
+                var padReaches = ko.observableArray();
+                var padReach = ko.observable();
+
+                var stems = ko.observableArray();
+                var stem = ko.observable();
+
+
                 var output = {
+                    aerobarHeights: aerobarHeights,
+                    aerobarHeight: aerobarHeight,
+                    padHeights: padHeights,
+                    padHeight: padHeight,
+                    padWidths: padWidths,
+                    padWidth: padWidth,
+                    padReaches: padReaches,
+                    padReach: padReach,
                     color: color,
                     manufacturer: manufacturer,
                     models: models,
                     model: model,
                     name: name,
+                    stem: stem,
+                    stems: stems
                 };
                 return output;
 

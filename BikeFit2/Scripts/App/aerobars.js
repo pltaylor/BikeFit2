@@ -176,10 +176,6 @@
                         return;
                     }
 
-                    if (localAerobar.stem() == null) {
-                        return;
-                    }
-
                     // calculate positions
                     localAerobar.headTubeTopXloc = ko.computed(function () {
                         return config.xOffset(-200.0);

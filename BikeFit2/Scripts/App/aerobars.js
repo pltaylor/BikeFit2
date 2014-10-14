@@ -94,23 +94,33 @@
 
                 var aerobarHeights = ko.observableArray();
                 var aerobarHeight = ko.observable();
+                aerobarHeight.subscribe(function () { drawAerobar(output); });
 
                 var padHeights = ko.observableArray();
                 var padHeight = ko.observable();
+                padHeight.subscribe(function () { drawAerobar(output); });
 
                 var padWidths = ko.observableArray();
                 var padWidth = ko.observable();
+                padWidth.subscribe(function () { drawAerobar(output); });
 
                 var padReaches = ko.observableArray();
                 var padReach = ko.observable();
+                padReach.subscribe(function () { drawAerobar(output); });
 
                 var stems = ko.observableArray();
                 var stem = ko.observable();
+                stem.subscribe(function () { drawAerobar(output); });
 
+                var padStackFormatted = ko.observable(0);
+                var padReachFormatted = ko.observable(0);
+                var aerobarStackFormatted = ko.observable(0);
+                var headTubeAngle = ko.observable(73);
 
                 var output = {
                     aerobarHeights: aerobarHeights,
                     aerobarHeight: aerobarHeight,
+                    headTubeAngle: headTubeAngle,
                     padHeights: padHeights,
                     padHeight: padHeight,
                     padWidths: padWidths,
@@ -123,7 +133,11 @@
                     model: model,
                     name: name,
                     stem: stem,
-                    stems: stems
+                    stems: stems,
+                    padStackFormatted: padStackFormatted,
+                    padReachFormatted: padReachFormatted,
+                    aerobarStackFormatted: aerobarStackFormatted
+
                 };
                 return output;
 
@@ -132,44 +146,47 @@
                         return;
                     }
 
+                    if (localAerobar.stem() == null) {
+                        return;
+                    }
+
                     // calculate positions
                     localAerobar.headTubeTopXloc = ko.computed(function () {
-                        return config.xOffset(0.0);
+                        return config.xOffset(-200.0);
                     });
                     localAerobar.headTubeTopYloc = ko.computed(function () {
                         return config.yOffset(0.0);
                     });
-                    localAerobar.headTubeAngle = ko.observable(73);
                     localAerobar.stemSteeringCenterXLocation = ko.computed(function () {
                         var totalHeight = parseFloat(localAerobar.stem().clampHeight()) / 2;
-                        var xDelta = Math.sin((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.scalingFactor);
+                        var xDelta = Math.sin((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.aeroScalingFactor);
                         return localAerobar.headTubeTopXloc() - xDelta;
                     });
 
                     localAerobar.stemSteeringCenterYLocation = ko.computed(function () {
                         var totalHeight = parseFloat(localAerobar.stem().clampHeight()) / 2;
-                        var yDelta = Math.cos((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.scalingFactor);
+                        var yDelta = Math.cos((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.aeroScalingFactor);
                         return localAerobar.headTubeTopYloc() - yDelta;
                     });
 
                     localAerobar.stemEndCenterXLocation = ko.computed(function () {
                         var angle = (localAerobar.stem().angle()) - localAerobar.headTubeAngle();
-                        var xDelta = Math.sin(angle * (Math.PI / 180)) * localAerobar.stem().length() * config.scalingFactor;
+                        var xDelta = Math.sin(angle * (Math.PI / 180)) * localAerobar.stem().length() * config.aeroScalingFactor;
                         return localAerobar.stemSteeringCenterXLocation() - xDelta;
                     });
 
                     localAerobar.stemEndCenterYLocation = ko.computed(function () {
                         var angle = (localAerobar.stem().angle()) - localAerobar.headTubeAngle();
-                        var yDelta = Math.cos(angle * (Math.PI / 180)) * localAerobar.stem().length() * config.scalingFactor;
+                        var yDelta = Math.cos(angle * (Math.PI / 180)) * localAerobar.stem().length() * config.aeroScalingFactor;
                         return localAerobar.stemSteeringCenterYLocation() - yDelta;
                     });
 
                     localAerobar.padCenterXLocation = ko.computed(function () {
-                        return localAerobar.stemEndCenterXLocation() + localAerobar.padReach().reach() * config.scalingFactor;
+                        return localAerobar.stemEndCenterXLocation() + localAerobar.padReach().reach() * config.aeroScalingFactor;
                     });
 
                     localAerobar.padCenterYLocation = ko.computed(function () {
-                        return localAerobar.stemEndCenterYLocation() - localAerobar.padHeight().height() * config.scalingFactor;
+                        return localAerobar.stemEndCenterYLocation() - localAerobar.padHeight().height() * config.aeroScalingFactor;
                     });
 
                     localAerobar.aeroBarStartXLocation = ko.computed(function () {
@@ -177,8 +194,12 @@
                     });
 
                     localAerobar.aeroBarStartYLocation = ko.computed(function () {
-                        return localAerobar.stemEndCenterYLocation() - localAerobar.aerobarHeight().height() * config.scalingFactor;
+                        return localAerobar.stemEndCenterYLocation() - localAerobar.aerobarHeight().height() * config.aeroScalingFactor;
                     });
+
+                    padStackFormatted(Math.round(-(localAerobar.padCenterYLocation() - localAerobar.headTubeTopYloc()) / config.aeroScalingFactor) + 'mm');
+                    padReachFormatted(Math.round((localAerobar.padCenterXLocation() - localAerobar.headTubeTopXloc()) / config.aeroScalingFactor) + 'mm');
+                    aerobarStackFormatted(Math.round(-(localAerobar.aeroBarStartYLocation() - localAerobar.headTubeTopYloc()) / config.aeroScalingFactor) + 'mm');
 
                     var drawingCanvas = document.getElementById(canvasName);
                     if (drawingCanvas.getContext) {
@@ -201,7 +222,7 @@
                         // create aero bar
                         ctx.beginPath();
                         ctx.moveTo(localAerobar.aeroBarStartXLocation(), localAerobar.aeroBarStartYLocation());
-                        ctx.lineTo(localAerobar.aeroBarStartXLocation() + 30, localAerobar.aeroBarStartYLocation());
+                        ctx.lineTo(localAerobar.aeroBarStartXLocation() + 200 * config.aeroScalingFactor, localAerobar.aeroBarStartYLocation());
                         ctx.strokeStyle = color;
                         ctx.stroke();
                     }

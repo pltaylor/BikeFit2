@@ -1,4 +1,4 @@
-﻿define(function() {
+﻿define(function () {
 
     var remoteServiceName = '../breeze/breeze';
 
@@ -12,8 +12,11 @@
 
     var scalingFactor = .22;
 
+    var aeroScalingFactor = 1;
+
     return {
         remoteServiceName: remoteServiceName,
+        aeroScalingFactor: aeroScalingFactor,
         scalingFactor: scalingFactor,
         xOffset: xOffset,
         yOffset: yOffset

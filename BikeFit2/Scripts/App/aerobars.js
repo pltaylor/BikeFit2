@@ -67,7 +67,6 @@
                 var model = ko.observable();
                 model.subscribe(function (newValue) {
                     if (newValue != null) {
-
                         aerobarHeights(newValue.aerobarHeights());
                         aerobarHeights.sort(function (l, r) { return l.height() > r.height() ? 1 : -1; });
                         aerobarHeight(aerobarHeights()[0]);
@@ -110,13 +109,25 @@
 
                 var stems = ko.observableArray();
                 var stem = ko.observable();
-                stem.subscribe(function () { drawAerobar(output); });
+                stem.subscribe(function (newValue) {
+                    stemLength(newValue.length());
+                    stemAngle(newValue.angle());
+                    stemClampHeight(newValue.clampHeight());
+                    drawAerobar(output);
+                });
 
                 var padStackFormatted = ko.observable(0);
                 var padReachFormatted = ko.observable(0);
                 var aerobarStackFormatted = ko.observable(0);
                 var headTubeAngle = ko.observable(73);
                 headTubeAngle.subscribe(function () { drawAerobar(output); });
+
+                var stemLength = ko.observable(0);
+                stemLength.subscribe(function () { drawAerobar(output); });
+                var stemAngle = ko.observable(0);
+                stemAngle.subscribe(function () { drawAerobar(output); });
+                var stemClampHeight = ko.observable(0);
+                stemClampHeight.subscribe(function () { drawAerobar(output); });
 
                 var output = {
                     aerobarHeights: aerobarHeights,
@@ -137,7 +148,10 @@
                     stems: stems,
                     padStackFormatted: padStackFormatted,
                     padReachFormatted: padReachFormatted,
-                    aerobarStackFormatted: aerobarStackFormatted
+                    aerobarStackFormatted: aerobarStackFormatted,
+                    stemLength : stemLength,
+                    stemAngle :stemAngle,
+                    stemClampHeight: stemClampHeight
 
                 };
                 return output;
@@ -159,26 +173,26 @@
                         return config.yOffset(0.0);
                     });
                     localAerobar.stemSteeringCenterXLocation = ko.computed(function () {
-                        var totalHeight = parseFloat(localAerobar.stem().clampHeight()) / 2;
+                        var totalHeight = parseFloat(localAerobar.stemClampHeight()) / 2;
                         var xDelta = Math.sin((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.aeroScalingFactor);
                         return localAerobar.headTubeTopXloc() - xDelta;
                     });
 
                     localAerobar.stemSteeringCenterYLocation = ko.computed(function () {
-                        var totalHeight = parseFloat(localAerobar.stem().clampHeight()) / 2;
+                        var totalHeight = parseFloat(localAerobar.stemClampHeight()) / 2;
                         var yDelta = Math.cos((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.aeroScalingFactor);
                         return localAerobar.headTubeTopYloc() - yDelta;
                     });
 
                     localAerobar.stemEndCenterXLocation = ko.computed(function () {
-                        var angle = (localAerobar.stem().angle()) - localAerobar.headTubeAngle();
-                        var xDelta = Math.sin(angle * (Math.PI / 180)) * localAerobar.stem().length() * config.aeroScalingFactor;
+                        var angle = (localAerobar.stemAngle()) - localAerobar.headTubeAngle();
+                        var xDelta = Math.sin(angle * (Math.PI / 180)) * localAerobar.stemLength() * config.aeroScalingFactor;
                         return localAerobar.stemSteeringCenterXLocation() - xDelta;
                     });
 
                     localAerobar.stemEndCenterYLocation = ko.computed(function () {
-                        var angle = (localAerobar.stem().angle()) - localAerobar.headTubeAngle();
-                        var yDelta = Math.cos(angle * (Math.PI / 180)) * localAerobar.stem().length() * config.aeroScalingFactor;
+                        var angle = (localAerobar.stemAngle()) - localAerobar.headTubeAngle();
+                        var yDelta = Math.cos(angle * (Math.PI / 180)) * localAerobar.stemLength() * config.aeroScalingFactor;
                         return localAerobar.stemSteeringCenterYLocation() - yDelta;
                     });
 

@@ -8,9 +8,9 @@
     define('jquery', function () { return jQuery; });
     define('knockout', ko);
 
-    define(['services/datacontext', 'services/logger'], boot);
+    define(['services/datacontext', 'services/logger', 'config'], boot);
 
-    function boot(datacontext, logger) {
+    function boot(datacontext, logger, config) {
         Q.all([applyViewModel()])
             .fail(failedInitialization);
 
@@ -88,7 +88,7 @@
                         stems.sort(function (l, r) { return l.length() > r.length() ? 1 : -1; });
                         stem(stems()[0]);
 
-                        drawFrame(newValue);
+                        drawAerobar(output);
                     }
                 });
 
@@ -127,70 +127,83 @@
                 };
                 return output;
 
-                function drawFrame(localSize) {
+                function drawAerobar(localAerobar) {
+                    if (localAerobar == null) {
+                        return;
+                    }
+
+                    // calculate positions
+                    localAerobar.headTubeTopXloc = ko.computed(function () {
+                        return config.xOffset(0.0);
+                    });
+                    localAerobar.headTubeTopYloc = ko.computed(function () {
+                        return config.yOffset(0.0);
+                    });
+                    localAerobar.headTubeAngle = ko.observable(73);
+                    localAerobar.stemSteeringCenterXLocation = ko.computed(function () {
+                        var totalHeight = parseFloat(localAerobar.stem().clampHeight()) / 2;
+                        var xDelta = Math.sin((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.scalingFactor);
+                        return localAerobar.headTubeTopXloc() - xDelta;
+                    });
+
+                    localAerobar.stemSteeringCenterYLocation = ko.computed(function () {
+                        var totalHeight = parseFloat(localAerobar.stem().clampHeight()) / 2;
+                        var yDelta = Math.cos((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.scalingFactor);
+                        return localAerobar.headTubeTopYloc() - yDelta;
+                    });
+
+                    localAerobar.stemEndCenterXLocation = ko.computed(function () {
+                        var angle = (localAerobar.stem().angle()) - localAerobar.headTubeAngle();
+                        var xDelta = Math.sin(angle * (Math.PI / 180)) * localAerobar.stem().length() * config.scalingFactor;
+                        return localAerobar.stemSteeringCenterXLocation() - xDelta;
+                    });
+
+                    localAerobar.stemEndCenterYLocation = ko.computed(function () {
+                        var angle = (localAerobar.stem().angle()) - localAerobar.headTubeAngle();
+                        var yDelta = Math.cos(angle * (Math.PI / 180)) * localAerobar.stem().length() * config.scalingFactor;
+                        return localAerobar.stemSteeringCenterYLocation() - yDelta;
+                    });
+
+                    localAerobar.padCenterXLocation = ko.computed(function () {
+                        return localAerobar.stemEndCenterXLocation() + localAerobar.padReach() * config.scalingFactor;
+                    });
+
+                    localAerobar.padCenterYLocation = ko.computed(function () {
+                        return localAerobar.stemEndCenterYLocation() - localAerobar.padHeight() * config.scalingFactor;
+                    });
+
+                    localAerobar.aeroBarStartXLocation = ko.computed(function () {
+                        return localAerobar.stemEndCenterXLocation() * config.scalingFactor;
+                    });
+
+                    localAerobar.aeroBarStartYLocation = ko.computed(function () {
+                        return localAerobar.stemEndCenterYLocation() - localAerobar.aerobarHeight() * config.scalingFactor;
+                    });
 
                     var drawingCanvas = document.getElementById(canvasName);
                     if (drawingCanvas.getContext) {
                         var ctx = drawingCanvas.getContext('2d');
                         // clear
-                        //ctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
-                        //if (localSize == null) {
-                        //    return;
-                        //}
-                        //// Create the rear wheel
-                        //ctx.beginPath();
-                        //ctx.arc(localSize.rearWheelXloc(), localSize.rearWheelYloc(), localSize.wheelRadius(), 0, Math.PI * 2, true);
-                        //ctx.closePath();
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
-                        //// create front wheel
-                        //ctx.beginPath();
-                        //ctx.arc(localSize.frontWheelXloc(), localSize.frontWheelYloc(), localSize.wheelRadius(), 0, Math.PI * 2, true);
-                        //ctx.closePath();
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
-                        //// create rear chainstay
-                        //ctx.beginPath();
-                        //ctx.moveTo(localSize.rearWheelXloc(), localSize.rearWheelYloc());
-                        //ctx.lineTo(localSize.bbXloc(), localSize.bbYloc());
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
-                        //// create seat tube
-                        //ctx.beginPath();
-                        //ctx.moveTo(localSize.seatTubeXloc(), localSize.seatTubeYloc());
-                        //ctx.lineTo(localSize.bbXloc(), localSize.bbYloc());
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
-                        //// create seat stay
-                        //ctx.beginPath();
-                        //ctx.moveTo(localSize.seatTubeXloc(), localSize.seatTubeYloc());
-                        //ctx.lineTo(localSize.rearWheelXloc(), localSize.rearWheelYloc());
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
-                        //// create downtube
-                        //ctx.beginPath();
-                        //ctx.moveTo(localSize.bbXloc(), localSize.bbYloc());
-                        //ctx.lineTo(localSize.headTubeBottomXloc(), localSize.headTubeBottomYloc());
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
-                        //// create toptube
-                        //ctx.beginPath();
-                        //ctx.moveTo(localSize.seatTubeXloc(), localSize.seatTubeYloc());
-                        //ctx.lineTo(localSize.headTubeTopXloc(), localSize.headTubeTopYloc());
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
-                        //// create headtube
-                        //ctx.beginPath();
-                        //ctx.moveTo(localSize.headTubeTopXloc(), localSize.headTubeTopYloc());
-                        //ctx.lineTo(localSize.headTubeBottomXloc(), localSize.headTubeBottomYloc());
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
-                        //// create fork
-                        //ctx.beginPath();
-                        //ctx.moveTo(localSize.frontWheelXloc(), localSize.frontWheelYloc());
-                        //ctx.lineTo(localSize.headTubeBottomXloc(), localSize.headTubeBottomYloc());
-                        //ctx.strokeStyle = color;
-                        //ctx.stroke();
+                        ctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
+
+                        // Create stem
+                        ctx.beginPath();
+                        ctx.moveTo(localAerobar.stemSteeringCenterXLocation(), localAerobar.stemSteeringCenterYLocation());
+                        ctx.lineTo(localAerobar.stemEndCenterXLocation(), localAerobar.stemEndCenterYLocation());
+                        ctx.strokeStyle = color;
+                        ctx.stroke();
+                        // create arm pads
+                        ctx.beginPath();
+                        ctx.moveTo(localAerobar.padCenterXLocation() - 5, localAerobar.padCenterYLocation());
+                        ctx.lineTo(localAerobar.padCenterXLocation() + 5, localAerobar.padCenterYLocation());
+                        ctx.strokeStyle = color;
+                        ctx.stroke();
+                        // create aero bar
+                        ctx.beginPath();
+                        ctx.moveTo(localAerobar.aeroBarStartXLocation(), localAerobar.aeroBarStartYLocation());
+                        ctx.lineTo(localAerobar.aeroBarStartXLocation() + 30, localAerobar.aeroBarStartYLocation());
+                        ctx.strokeStyle = color;
+                        ctx.stroke();
                     }
                 }
             }

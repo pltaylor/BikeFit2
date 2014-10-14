@@ -21,13 +21,16 @@ namespace BikeFit2.Migrations
               new AeroBarType { AeroBarTypeId = 4, Type = "Aerobar & Basebar & Stem" }
             );
 
+            var testManufacturer = new AerobarManufacturer {Name = "Test", IsActive = true};
             context.AeroBarManufacturers.AddOrUpdate(
                 m => m.Name,
                 new AerobarManufacturer { Name = "Tririg" },
                 new AerobarManufacturer { Name = "Zipp" },
                 new AerobarManufacturer { Name = "3T" },
                 new AerobarManufacturer { Name = "Profile Design" },
-                new AerobarManufacturer { Name = "Vision" });
+                new AerobarManufacturer { Name = "Vision" },
+                testManufacturer);
+
         }
     }
 }

@@ -18,6 +18,8 @@ namespace BikeFit2.Models.Aerobar
 
         public double Angle { get; set; }
 
+        public double ClampHeight { get; set; }
+
         [ForeignKey("AerobarModel")]
         public Guid AerobarID { get; set; }
 

@@ -67,6 +67,16 @@
                 var model = ko.observable();
                 model.subscribe(function (newValue) {
                     if (newValue != null) {
+
+                        if (newValue.aeroBarType().type().indexOf("Stem") > -1) {
+                            showStemOptions(false);
+                        } else {
+                            showStemOptions(true);
+                            stemLength(90);
+                            stemAngle(-17);
+                            stemClampHeight(40);
+                        }
+
                         aerobarHeights(newValue.aerobarHeights());
                         aerobarHeights.sort(function (l, r) { return l.height() > r.height() ? 1 : -1; });
                         aerobarHeight(aerobarHeights()[0]);
@@ -129,6 +139,9 @@
                 var stemClampHeight = ko.observable(0);
                 stemClampHeight.subscribe(function () { drawAerobar(output); });
 
+                var showStemOptions = ko.observable(true);
+                var showStemDropdown = ko.computed(function () { return !showStemOptions(); });
+
                 var output = {
                     aerobarHeights: aerobarHeights,
                     aerobarHeight: aerobarHeight,
@@ -151,7 +164,9 @@
                     aerobarStackFormatted: aerobarStackFormatted,
                     stemLength : stemLength,
                     stemAngle :stemAngle,
-                    stemClampHeight: stemClampHeight
+                    stemClampHeight: stemClampHeight,
+                    showStemOptions: showStemOptions,
+                    showStemDropdown: showStemDropdown
 
                 };
                 return output;

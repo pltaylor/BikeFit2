@@ -12,7 +12,7 @@
 
     var scalingFactor = .22;
 
-    var aeroScalingFactor = 1;
+    var aeroScalingFactor = 1.0;
 
     return {
         remoteServiceName: remoteServiceName,

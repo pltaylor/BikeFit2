@@ -116,6 +116,7 @@
                 var padReachFormatted = ko.observable(0);
                 var aerobarStackFormatted = ko.observable(0);
                 var headTubeAngle = ko.observable(73);
+                headTubeAngle.subscribe(function () { drawAerobar(output); });
 
                 var output = {
                     aerobarHeights: aerobarHeights,

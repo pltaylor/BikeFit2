@@ -165,19 +165,19 @@
                     });
 
                     localAerobar.padCenterXLocation = ko.computed(function () {
-                        return localAerobar.stemEndCenterXLocation() + localAerobar.padReach() * config.scalingFactor;
+                        return localAerobar.stemEndCenterXLocation() + localAerobar.padReach().reach() * config.scalingFactor;
                     });
 
                     localAerobar.padCenterYLocation = ko.computed(function () {
-                        return localAerobar.stemEndCenterYLocation() - localAerobar.padHeight() * config.scalingFactor;
+                        return localAerobar.stemEndCenterYLocation() - localAerobar.padHeight().height() * config.scalingFactor;
                     });
 
                     localAerobar.aeroBarStartXLocation = ko.computed(function () {
-                        return localAerobar.stemEndCenterXLocation() * config.scalingFactor;
+                        return localAerobar.stemEndCenterXLocation();
                     });
 
                     localAerobar.aeroBarStartYLocation = ko.computed(function () {
-                        return localAerobar.stemEndCenterYLocation() - localAerobar.aerobarHeight() * config.scalingFactor;
+                        return localAerobar.stemEndCenterYLocation() - localAerobar.aerobarHeight().height() * config.scalingFactor;
                     });
 
                     var drawingCanvas = document.getElementById(canvasName);

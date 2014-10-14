@@ -25,7 +25,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Aerobar Comparison", "Index", "Aerobar")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Aerobar Comparison", "Aerobar", "Home")</li>
                     <li>@Html.ActionLink("Full Tri Bike", "FullTriBike", "Home")</li>
                     @if (User.IsInRole("MeasurementAdmin"))
                     {

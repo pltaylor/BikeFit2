@@ -74,7 +74,7 @@
                             showStemOptions(true);
                             stemLength(90);
                             stemAngle(-17);
-                            stemClampHeight(40);
+                            stemClampHeight(30);
                         }
 
                         aerobarHeights(newValue.aerobarHeights());
@@ -185,6 +185,19 @@
                     localAerobar.headTubeTopYloc = ko.computed(function () {
                         return config.yOffset(0.0);
                     });
+
+                    localAerobar.stemSteeringTopXLocation = ko.computed(function () {
+                        var totalHeight = parseFloat(localAerobar.stemClampHeight());
+                        var xDelta = Math.sin((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.aeroScalingFactor);
+                        return localAerobar.headTubeTopXloc() - xDelta;
+                    });
+
+                    localAerobar.stemSteeringTopYLocation = ko.computed(function () {
+                        var totalHeight = parseFloat(localAerobar.stemClampHeight());
+                        var yDelta = Math.cos((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.aeroScalingFactor);
+                        return localAerobar.headTubeTopYloc() - yDelta;
+                    });
+
                     localAerobar.stemSteeringCenterXLocation = ko.computed(function () {
                         var totalHeight = parseFloat(localAerobar.stemClampHeight()) / 2;
                         var xDelta = Math.sin((90 - localAerobar.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.aeroScalingFactor);
@@ -235,22 +248,33 @@
                         // clear
                         ctx.clearRect(0, 0, drawingCanvas.width, drawingCanvas.height);
 
+                        // Create stem clamp
+                        ctx.beginPath();
+                        ctx.moveTo(localAerobar.headTubeTopXloc(), localAerobar.headTubeTopYloc());
+                        ctx.lineTo(localAerobar.stemSteeringTopXLocation(), localAerobar.stemSteeringTopYLocation());
+                        ctx.lineWidth = 15 * config.aeroScalingFactor;
+                        ctx.strokeStyle = color;
+                        ctx.stroke();
+
                         // Create stem
                         ctx.beginPath();
                         ctx.moveTo(localAerobar.stemSteeringCenterXLocation(), localAerobar.stemSteeringCenterYLocation());
                         ctx.lineTo(localAerobar.stemEndCenterXLocation(), localAerobar.stemEndCenterYLocation());
+                        ctx.lineWidth = 10 * config.aeroScalingFactor;
                         ctx.strokeStyle = color;
                         ctx.stroke();
                         // create arm pads
                         ctx.beginPath();
                         ctx.moveTo(localAerobar.padCenterXLocation() - 5, localAerobar.padCenterYLocation());
                         ctx.lineTo(localAerobar.padCenterXLocation() + 5, localAerobar.padCenterYLocation());
+                        ctx.lineWidth = 4 * config.aeroScalingFactor;
                         ctx.strokeStyle = color;
                         ctx.stroke();
                         // create aero bar
                         ctx.beginPath();
                         ctx.moveTo(localAerobar.aeroBarStartXLocation(), localAerobar.aeroBarStartYLocation());
                         ctx.lineTo(localAerobar.aeroBarStartXLocation() + 200 * config.aeroScalingFactor, localAerobar.aeroBarStartYLocation());
+                        ctx.lineWidth = 3 * config.aeroScalingFactor;
                         ctx.strokeStyle = color;
                         ctx.stroke();
                     }

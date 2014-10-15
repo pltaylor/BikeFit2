@@ -265,8 +265,8 @@
                         ctx.stroke();
                         // create arm pads
                         ctx.beginPath();
-                        ctx.moveTo(localAerobar.padCenterXLocation() - 5, localAerobar.padCenterYLocation());
-                        ctx.lineTo(localAerobar.padCenterXLocation() + 5, localAerobar.padCenterYLocation());
+                        ctx.moveTo(localAerobar.padCenterXLocation() - 10, localAerobar.padCenterYLocation());
+                        ctx.lineTo(localAerobar.padCenterXLocation() + 10, localAerobar.padCenterYLocation());
                         ctx.lineWidth = 4 * config.aeroScalingFactor;
                         ctx.strokeStyle = color;
                         ctx.stroke();

@@ -372,6 +372,7 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="newrelic\NewRelic.Profiler.dll" />
+    <None Include="NWebsec.AzureStartupTasks\ReadMe.txt" />
     <Content Include="Scripts\App\aerobarAdminIndex.js" />
     <Content Include="Scripts\App\aerobars.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -382,6 +383,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\App\Config.js" />
+    <Content Include="NWebsec.AzureStartupTasks\Web.config" />
+    <Content Include="NWebsec.AzureStartupTasks\TLS_hardening.cmd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="NWebsec.AzureStartupTasks\scripts\TLS_hardening.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="NWebsecConfig\HttpHeaderSecurityModuleConfig.xsd">
       <SubType>Designer</SubType>
     </None>

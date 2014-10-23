@@ -228,6 +228,10 @@
 
             bikeSize.armPadOffset = ko.observable(0);
 
+            bikeSize.barReach = ko.observable(80);
+
+            bikeSize.barDrop = ko.observable(128);
+
             bikeSize.stemSteeringCenterXLocation = ko.computed(function() {
                 var totalHeight = parseFloat(bikeSize.headSetTopCap()) + parseFloat(bikeSize.steeringSpacers()) + parseFloat(bikeSize.stemThickness()) / 2;
                 var xDelta = Math.sin((90 - bikeSize.headTubeAngle()) * (Math.PI / 180)) * (totalHeight * config.scalingFactor);

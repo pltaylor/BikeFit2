@@ -377,6 +377,9 @@
     <Content Include="Scripts\App\aerobars.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Scripts\App\fullRoadBike.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\App\measurementAdminIndex.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -486,6 +489,7 @@
     <Content Include="Views\AerobarAdmin\Index.cshtml" />
     <Content Include="Views\Home\Aerobar.cshtml" />
     <Content Include="Views\Home\AerobarSelection.cshtml" />
+    <Content Include="Views\Home\FullRoadBIke.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
